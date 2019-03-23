@@ -1,0 +1,77 @@
+
+h2 {
+	font-size: 32px;
+      text-transform: uppercase;
+
+      color: #303030;
+      font-weight: 600;
+      padding-top:1160px;
+	  margin-bottom: 10px;
+	  
+}
+
+
+.headerList{
+	  font-size: 40px;
+      text-transform: uppercase;
+      color: #303030;
+      font-weight: 600;
+	  margin-bottom: 10px;
+	  text-align: center;
+	  margin: auto;
+	  width: 100%;
+}
+
+.SignupBox{
+  background:white;
+  width:500px;
+  border-radius:6px;
+  margin: 0 auto 0 auto;
+  padding:0px 0px 70px 0px; /*top right bottom left*/
+  border: #303030 4px solid; 
+
+ /* display: flex; 
+  flex-direction: column; 
+  justify-content: center;*/
+
+}
+
+/*
+.loginForm{
+vertical-align:middle;
+text-align:center;
+padding-top:80px;
+}
+
+.LoginButton {
+	background-color: gray;
+	color: white;
+	padding: 6px 34px;
+	text-align: center;
+	font-size: 16px;
+	cursor: pointer;				
+}
+
+.ListHead {
+ background:white;
+  margin: 0 auto 0 auto;
+  left: 0;
+  top: 0;
+  width: 100%;
+  border: none; 
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.ListHead >span {
+	text-align: left;
+}
+
+
+.ListHead >a {
+	text-align: right;
+	margin: 15px;
+}
+*/
+
