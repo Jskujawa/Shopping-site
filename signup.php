@@ -40,10 +40,12 @@
 								<div class = "form-group">
 									<input class="form-control" id="phone" name="phone" placeholder="Phone Number" type="text" required>
 								</div>
-
-							<div class="panel-footer">
-								<button class="btn btn-lg" type="submit">Submit</button>
-							</div>
+								<a href = 'login.php'> 
+									<div class="panel-footer">
+									<button class="btn btn-lg" type="submit">Submit</button>
+									</div>
+								</a>
+							
 						</form>      
 					</div>       
 					<div class="col-sm-4 col-xs-12">
