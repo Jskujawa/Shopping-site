@@ -1,4 +1,30 @@
+body {
+	background-color: white;
+	font-size:50px;
+}
 
+.jumbotron {
+	font-family: verdana;
+}
+
+h1 {
+	color: black;
+	text-align: center;
+}
+
+img {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+p {
+	margin: auto;
+	text-align: center;
+	font-family: verdana;
+	font-size: 25px;
+}
+	
 h2 {
 	font-size: 32px;
       text-transform: uppercase;
