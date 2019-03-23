@@ -2,9 +2,10 @@
 
 //Login Page Form Case
 
-	if (isset($_POST["signup"])) {
-    $sign = $_POST["signup"];
+	if (isset($_POST['btnsignup'])) {
+    echo file_get_contents("../html_files/signup.html");
+	}else{
+	echo "Login feature unavailable at this time.";	
 	}
-	
-	echo $sign;
+
 ?>
