@@ -25,7 +25,7 @@
 						<div class="panel-heading">
 						  <h1 >Login</h1>
 						</div>
-						<form class="panel-body" action="../php_files/loginPHP.php" method='post'>
+						<form class="panel-body" action="php_files/loginPHP.php" method='post'>
 								<div class = "form-group">
 									<input class="form-control" id="Username" name="username" placeholder="Username" type="text">
 								</div>
@@ -33,8 +33,8 @@
 									<input class="form-control" id="Password" name="pwd" placeholder="Password" type="password">
 								</div>
 							<div class="panel-footer">
-								<button class="btn btn-lg" type="submit" name="btnsubmit">Login</button> 
-								<button class="btn btn-lg" type="submit" name="btnsignup" >Sign Up</button>
+								<button class="btn btn-lg" type="submit" name="btnsubmit">Login</button>
+								<form action="signup.php"><button class="btn btn-lg" type="submit" name="btnsignup" >Sign Up</button> </form>								
 							</div>
 						</form>      
 					</div>       

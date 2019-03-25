@@ -23,7 +23,7 @@
 						<div class="panel-heading">
 						  <h1 >Sign Up</h1>
 						</div>
-						<form class="panel-body" action="php_files/signupPHP.php" method='post'> 
+						<form class="panel-body" action="login.php" method='post'> 
 								<div class = "form-group">
 									<input class="form-control" id="Username" name="username" placeholder="Username" type="text" required>
 								</div>
