@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"> 
+	<title>return</title> 
+	<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">  
+	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="text-center">  
+		<img src="./picture/logo.png" alt="brand" width="100" height="100">
+		<h3>Clothes Return Form</h3>
+	</div>
+<br>
+
+
+<div id="Login" class="container">
+	<div class="row">
+		<form class="form-horizontal" role="form">
+			<div class="form-group">
+				<label for="name" class="col-sm-4 control-label">Return Product:</label>
+				<div class="col-sm-5">
+					<input type="text" class="form-control" id="name" 
+					placeholder="Please enter the product name">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="name" class="col-sm-4 control-label">Return Reason:</label>
+				<div class="col-sm-5">
+					<input type="text" class="form-control" id="name" 
+					placeholder="Please enter return reason">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="name" class="col-sm-4 control-label">Express Number:</label>
+				<div class="col-sm-5">
+					<input type="text" class="form-control" id="name" 
+					placeholder="Please enter express number">
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label for="name" class="col-sm-4 control-label">Note:</label>
+				<div class="col-sm-5">
+					<textarea class="form-control" id="comments" name="comments" placeholder="Please make some notes if need" rows="5"></textarea><br>
+				</div>
+			<div class="col-sm-offset-9 col-sm-4">
+			<button class="btn" type="submit" name="btnsubmit">Return Product</button>
+			</div>
+		</form>
+	</div>
+</div>
+
+
+
+</body>
+</html>
