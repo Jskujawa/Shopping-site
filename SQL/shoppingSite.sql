@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Apr 14, 2019 at 04:56 PM
+-- Generation Time: Apr 14, 2019 at 06:24 PM
 -- Server version: 5.7.24
 -- PHP Version: 7.2.14
 
@@ -21,6 +21,32 @@ SET time_zone = "+00:00";
 --
 -- Database: `shoppingsite`
 --
+CREATE DATABASE IF NOT EXISTS `shoppingsite` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `shoppingsite`;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `account`
+--
+
+DROP TABLE IF EXISTS `account`;
+CREATE TABLE IF NOT EXISTS `account` (
+  `username` varchar(30) NOT NULL,
+  `password` varchar(32) NOT NULL,
+  `role` varchar(20) NOT NULL,
+  `customer_id` int(100) NOT NULL,
+  PRIMARY KEY (`username`),
+  KEY `customer_id` (`customer_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `account`
+--
+
+INSERT INTO `account` (`username`, `password`, `role`, `customer_id`) VALUES
+('Heisenberg', 'WaltJr', 'admin', 1234),
+('SpiderMan', 'UncleBen', 'customer', 2222);
 
 -- --------------------------------------------------------
 
@@ -30,7 +56,7 @@ SET time_zone = "+00:00";
 
 DROP TABLE IF EXISTS `campaign`;
 CREATE TABLE IF NOT EXISTS `campaign` (
-  `campaign_id` int(20) NOT NULL,
+  `campaign_id` int(20) NOT NULL AUTO_INCREMENT,
   `campaign_type` varchar(100) NOT NULL,
   `campaign_beg_date` char(10) NOT NULL,
   `campaign_end_date` char(10) NOT NULL,
@@ -45,8 +71,8 @@ CREATE TABLE IF NOT EXISTS `campaign` (
 
 DROP TABLE IF EXISTS `customer`;
 CREATE TABLE IF NOT EXISTS `customer` (
-  `customer_id` varchar(100) NOT NULL,
-  `campaign_id` varchar(20) NOT NULL,
+  `customer_id` int(100) NOT NULL AUTO_INCREMENT,
+  `campaign_id` int(20) NOT NULL,
   `firstname` varchar(100) NOT NULL,
   `lastname` varchar(100) NOT NULL,
   `email` varchar(30) NOT NULL,
@@ -54,10 +80,18 @@ CREATE TABLE IF NOT EXISTS `customer` (
   `city` varchar(100) NOT NULL,
   `state` varchar(2) NOT NULL,
   `zipcode` varchar(8) NOT NULL,
-  `phone` int(15) NOT NULL,
+  `phone` bigint(15) NOT NULL,
   PRIMARY KEY (`customer_id`),
   KEY `campaign_id` (`campaign_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=2223 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `customer`
+--
+
+INSERT INTO `customer` (`customer_id`, `campaign_id`, `firstname`, `lastname`, `email`, `street`, `city`, `state`, `zipcode`, `phone`) VALUES
+(1234, 1, 'Walter', 'White', 'walterwhite@yahoo.com', '308 Negra Arroyo Lane', 'Albuquerque', 'NM', '87111', 2132445561),
+(2222, 1, 'Peter', 'Parker', 'spidey@gmail.com', '20 Ingram Street', 'Forest Hills', 'NY', '11375', 2132121222);
 
 -- --------------------------------------------------------
 
@@ -130,17 +164,25 @@ CREATE TABLE IF NOT EXISTS `orderline` (
 
 DROP TABLE IF EXISTS `payment_method`;
 CREATE TABLE IF NOT EXISTS `payment_method` (
-  `payment_id` int(13) NOT NULL,
-  `customer_id` int(9) NOT NULL,
+  `payment_id` int(13) NOT NULL AUTO_INCREMENT,
+  `customer_id` int(100) NOT NULL,
   `payment_type` varchar(20) NOT NULL,
   `firstname` varchar(100) NOT NULL,
   `lastname` varchar(100) NOT NULL,
-  `card_number` int(16) NOT NULL,
+  `card_number` bigint(16) NOT NULL,
   `expiration` varchar(5) NOT NULL,
   `security_code` int(3) NOT NULL,
   PRIMARY KEY (`payment_id`),
   KEY `customer_id` (`customer_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `payment_method`
+--
+
+INSERT INTO `payment_method` (`payment_id`, `customer_id`, `payment_type`, `firstname`, `lastname`, `card_number`, `expiration`, `security_code`) VALUES
+(1, 1234, 'visa', 'Walter', 'White', 1234123412341234, '08/22', 123),
+(2, 2222, 'mastercard', 'Peter', 'Parker', 8763926408215394, '09/24', 343);
 
 -- --------------------------------------------------------
 
@@ -164,8 +206,8 @@ CREATE TABLE IF NOT EXISTS `product` (
 
 DROP TABLE IF EXISTS `productorder`;
 CREATE TABLE IF NOT EXISTS `productorder` (
-  `order_id` int(20) NOT NULL,
-  `customer_id` varchar(100) NOT NULL,
+  `order_id` int(20) NOT NULL AUTO_INCREMENT,
+  `customer_id` int(100) NOT NULL,
   `purchase_amount` int(20) NOT NULL,
   PRIMARY KEY (`order_id`),
   KEY `customer_id` (`customer_id`)
@@ -180,7 +222,7 @@ CREATE TABLE IF NOT EXISTS `productorder` (
 DROP TABLE IF EXISTS `shippingmethod`;
 CREATE TABLE IF NOT EXISTS `shippingmethod` (
   `shipping_id` varchar(100) NOT NULL,
-  `order_id` varchar(100) NOT NULL,
+  `order_id` int(100) NOT NULL,
   `street` varchar(100) NOT NULL,
   `city` varchar(100) NOT NULL,
   `state` varchar(2) NOT NULL,
@@ -206,7 +248,7 @@ CREATE TABLE IF NOT EXISTS `supplier` (
   `state` varchar(2) NOT NULL,
   `zipcode` varchar(8) NOT NULL,
   `email` varchar(30) NOT NULL,
-  `phone` int(15) NOT NULL,
+  `phone` bigint(15) NOT NULL,
   PRIMARY KEY (`supplier_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 COMMIT;
