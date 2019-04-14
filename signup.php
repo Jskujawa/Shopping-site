@@ -1,3 +1,5 @@
+
+
 <html>
 	<head>
 		<title>Sign Up</title>
@@ -32,7 +34,7 @@
 								</div>
 								
 								<div class = "form-group">
-									<input class="form-control" id="Confirm_password" name="cpwd" placeholder="Confirm Password" type="text" required>
+									<input class="form-control" id="Confirm_password" name="cpwd" placeholder="Confirm Password" type="password" data-toggle="password" required>
 								</div>
 								<div class = "form-group">
 									<input class="form-control" id="email" name="email" placeholder="Email Address" type="text" required>

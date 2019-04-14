@@ -1,3 +1,4 @@
+
 <html>
 	<head>
 		<title>Suburban Outfitters Login</title>
@@ -24,6 +25,18 @@
 					<div class="panel panel-default text-center">
 						<div class="panel-heading">
 						  <h1 >Login</h1>
+						  <h3><font color="red">
+								<?php 
+								//Returns invalid user/pass from login.php file if user not found
+								session_start();
+								if(empty($_SESSION['loginMessage'])){
+										echo "";
+									} else{
+										echo $_SESSION['loginMessage'];
+									}
+								?>
+							</font>
+						  <h3
 						</div>
 						<form class="panel-body" action="php_files/loginPHP.php" method='post'>
 								<div class = "form-group">
