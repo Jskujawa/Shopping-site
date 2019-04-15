@@ -36,7 +36,7 @@
 									}
 								?>
 							</font>
-						  <h3
+						  </h3>
 						</div>
 						<form class="panel-body" action="php_files/loginPHP.php" method='post'>
 								<div class = "form-group">
