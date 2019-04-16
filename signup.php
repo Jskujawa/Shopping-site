@@ -41,15 +41,32 @@
 								<div class = "form-group">	
 									<input class="form-control" id="Password" name="pwd" placeholder="Password" type="password" data-toggle="password" required>
 								</div>
-								
 								<div class = "form-group">
 									<input class="form-control" id="Confirm_password" name="cpwd" placeholder="Confirm Password" type="password" data-toggle="password" required>
+								</div>
+								<div class = "form-group">
+									<input class="form-control" id="FirstName" name="fname" placeholder="First Name" type="text" required>
+								</div>
+								<div class = "form-group">
+									<input class="form-control" id="LastName" name="lname" placeholder="Last Name" type="text" required>
 								</div>
 								<div class = "form-group">
 									<input class="form-control" id="email" name="email" placeholder="Email Address" type="text" required>
 								</div>
 								<div class = "form-group">
-									<input class="form-control" id="phone" name="phone" placeholder="Phone Number" type="text" required>
+									<input class="form-control" id="Address" name="address" placeholder="Street Address" type="text" required>
+								</div>
+								<div class = "form-group">
+									<input class="form-control" id="City" name="city" placeholder="City" type="text" required>
+								</div>
+								<div class = "form-group">
+									<input class="form-control" maxlength="2" id="State" name="state" placeholder="State(XX)" type="text" required>
+								</div>
+								<div class = "form-group">
+									<input class="form-control" id="Zip" name="zip" placeholder="Zip Code" type="text" required>
+								</div>
+								<div class = "form-group">
+									<input class="form-control" id="phone" name="phone" placeholder="Phone Number(##########)" type="text" required>
 								</div>
 								<a href = 'login.php'> 
 									<div class="panel-footer">

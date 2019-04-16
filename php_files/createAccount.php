@@ -8,7 +8,13 @@ if($conn->connect_error) die($conn->connect_error);
 $username = $_POST["username"];
 $password = $_POST["pwd"];
 $cpassword = $_POST["cpwd"];//confirm password
+$fname = $_POST["fname"];
+$lname = $_POST["lname"];
 $email = $_POST["email"];
+$address = $_POST["address"];
+$city = $_POST["city"];
+$state = $_POST["state"];
+$zip = $_POST["zip"];
 $phone = $_POST["phone"];
 
 /*echo $username."<br>";
@@ -49,10 +55,18 @@ elseif($unexists == 1){
 }else{
 	//code to add account to db
 	//need to work on query to insert into both customer and account. Should insert into customer first, then lookup customer_id for account from customer table
-	$query2 = "INSERT INTO account (username, password, role, customer_id) VALUES ('$username', '$password','customer', 1)"; //customer_id is placeholder for now
-	
+	$query2 = "INSERT into customer (`campaign_id`, `firstname`, `lastname`, `email`, `street`, `city`, `state`, `zipcode`, `phone`) 
+			VALUES (1,'$fname','$lname','$email','$address','$city','$state','$zip','$phone');";
 	$result2 = $conn->query($query2);
-	if(!$result2) die($conn->error);	
+	if(!$result2) die($conn->error);			
+	
+	//$query3 = "SELECT customer_id FROM customer where firstname = '$fname'"; 
+	//YET TO BE DONE: Take max customer_id before inserting customer row, then use that max +1 as new customer id. essentially an autoincrement, but can insert across tables
+	
+	$query4 = "INSERT INTO account (username, password, role, customer_id) VALUES ('$username', '$password','customer', 1);"; //customer_id is placeholder for now
+	$result4 = $conn->query($query4);
+	if(!$result4) die($conn->error);
+	
 	
 	header("Location: ../login.php");
 	$_SESSION['signupMessage'] = "";
