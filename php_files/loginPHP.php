@@ -18,7 +18,7 @@ $password = $_POST["pwd"];
 		$result = $conn->query($query);
 		$row = $result->fetch_array(MYSQLI_ASSOC);
 		
-		if ($password = $row['password']) {
+		if ($password == $row['password']) {
 			//set up username and password session variables and send to clothes_list
 			session_start();
 			$_SESSION['username'] = $username;	
