@@ -1,5 +1,3 @@
-
-
 <html>
 	<head>
 		<title>Sign Up</title>
@@ -24,8 +22,19 @@
 					<div class="panel panel-default text-center">
 						<div class="panel-heading">
 						  <h1 >Sign Up</h1>
+						  <h3><font color="red">
+								<?php 
+								session_start();
+								if(empty($_SESSION['signupMessage'])){
+										echo "";
+									} else{
+										echo $_SESSION['signupMessage'];
+									}
+								?>
+							</font>
+						  </h3>
 						</div>
-						<form class="panel-body" action="login.php" method='post'> 
+						<form class="panel-body" action="php_files/createAccount.php" method='post'> 
 								<div class = "form-group">
 									<input class="form-control" id="Username" name="username" placeholder="Username" type="text" required>
 								</div>
