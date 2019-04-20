@@ -39,6 +39,7 @@ for($j=0; $j<$rows; $j++)
 		$dbusername = $row['username'];//name of column for MYSQLI_ASSOC, MYSQLI_NUM would be 3 for the 3rd column in database
 		if ($dbusername == $username){
 			$unexists = 1; //check for username already existing in db
+		break;
 		}
 	}
 
