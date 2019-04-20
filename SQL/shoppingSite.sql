@@ -46,8 +46,10 @@ CREATE TABLE IF NOT EXISTS `account` (
 
 INSERT INTO `account` (`username`, `password`, `role`, `customer_id`) VALUES
 ('Heisenberg', 'WaltJr', 'admin', 1234),
-('SpiderMan', 'UncleBen', 'customer', 2222);
-
+('SpiderMan', 'UncleBen', 'customer', 2222),
+('Scarletwid', 'pass2349', 'customer', 3635),
+('TonyS', '900loginpass', 'customer', 18995),
+('RachelGren', 'super90078', 'customer', 644597);
 -- --------------------------------------------------------
 
 --
@@ -58,10 +60,15 @@ DROP TABLE IF EXISTS `campaign`;
 CREATE TABLE IF NOT EXISTS `campaign` (
   `campaign_id` int(20) NOT NULL AUTO_INCREMENT,
   `campaign_type` varchar(100) NOT NULL,
-  `campaign_beg_date` char(10) NOT NULL,
-  `campaign_end_date` char(10) NOT NULL,
+  `campaign_beg_date` char(30) NOT NULL,
+  `campaign_end_date` char(30) NOT NULL,
   PRIMARY KEY (`campaign_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+INSERT INTO campaign (campaign_id, campaign_type, campaign_beg_date, campaign_end_date)
+VALUES ('399654','Spring Sale','March 31, 2019','April 30, 2019'),
+('122654','10% Student Discount','N/A','N/A');
+
 
 -- --------------------------------------------------------
 
@@ -89,9 +96,14 @@ CREATE TABLE IF NOT EXISTS `customer` (
 -- Dumping data for table `customer`
 --
 
-INSERT INTO `customer` (`customer_id`, `campaign_id`, `firstname`, `lastname`, `email`, `street`, `city`, `state`, `zipcode`, `phone`) VALUES
-(1234, 1, 'Walter', 'White', 'walterwhite@yahoo.com', '308 Negra Arroyo Lane', 'Albuquerque', 'NM', '87111', 2132445561),
-(2222, 1, 'Peter', 'Parker', 'spidey@gmail.com', '20 Ingram Street', 'Forest Hills', 'NY', '11375', 2132121222);
+INSERT INTO customer (customer_id, campaign_id, firstname, lastname, street, city, state, zipcode, email, phone)
+ VALUES
+('1234','399654','Walter','White','865 Circle Ave.','Pheonix','AZ','94103','wwjunior@gmail.com',8016535889),
+('2222','122654','Peter','Parker','900 3 Ave.','New York City','NY','65991','ppspider@hotmail.com',6659987556),
+('3635','122654','Scarlett','Widow','22 Meadow Circle','LA','CA','51226','thewidow@outlook.com',6058874112),
+('18995','122654','Tony','Stark','50 North Penthouse','NYC','NY','65201','tony@stark.com',6045578911),
+('644597','399654','Rachel','Green','300 4 Ave. Apartment. #5','NYC','NY','65874','rachelgreen56@gmail.com',2036648892);
+
 
 -- --------------------------------------------------------
 
@@ -101,12 +113,13 @@ INSERT INTO `customer` (`customer_id`, `campaign_id`, `firstname`, `lastname`, `
 
 DROP TABLE IF EXISTS `inventory`;
 CREATE TABLE IF NOT EXISTS `inventory` (
-  `inventory_id` varchar(100) NOT NULL,
-  `product_id` varchar(100) NOT NULL,
+  `inventory_id` int(50) NOT NULL,
+  `product_id` int(50) NOT NULL,
   `quantity_on_hand` int(100) NOT NULL,
   PRIMARY KEY (`inventory_id`),
   KEY `product_id` (`product_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
 
 -- --------------------------------------------------------
 
@@ -116,8 +129,8 @@ CREATE TABLE IF NOT EXISTS `inventory` (
 
 DROP TABLE IF EXISTS `inventoryorder`;
 CREATE TABLE IF NOT EXISTS `inventoryorder` (
-  `supplier_id` varchar(20) NOT NULL,
-  `inventory_id` varchar(100) NOT NULL,
+  `supplier_id` int(50) NOT NULL,
+  `inventory_id` int(50) NOT NULL,
   `quantity` int(100) NOT NULL,
   `order_date` char(10) NOT NULL,
   `expected_arrival_date` char(10) NOT NULL,
@@ -132,9 +145,9 @@ CREATE TABLE IF NOT EXISTS `inventoryorder` (
 
 DROP TABLE IF EXISTS `inventoryreturn`;
 CREATE TABLE IF NOT EXISTS `inventoryreturn` (
-  `return_id` varchar(50) NOT NULL,
-  `inventory_id` varchar(100) NOT NULL,
-  `order_id` int(20) NOT NULL,
+  `return_id` int(50) NOT NULL,
+  `inventory_id` int(50) NOT NULL,
+  `order_id` int(50) NOT NULL,
   `return_date` char(10) NOT NULL,
   `return_amount` varchar(100) NOT NULL,
   `quantity` int(100) NOT NULL,
@@ -150,8 +163,8 @@ CREATE TABLE IF NOT EXISTS `inventoryreturn` (
 
 DROP TABLE IF EXISTS `orderline`;
 CREATE TABLE IF NOT EXISTS `orderline` (
-  `order_id` int(20) NOT NULL,
-  `product_id` varchar(100) NOT NULL,
+  `order_id` int(50) NOT NULL,
+  `product_id` int(50) NOT NULL,
   `quantity` int(100) NOT NULL,
   PRIMARY KEY (`order_id`,`product_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
@@ -164,8 +177,8 @@ CREATE TABLE IF NOT EXISTS `orderline` (
 
 DROP TABLE IF EXISTS `payment_method`;
 CREATE TABLE IF NOT EXISTS `payment_method` (
-  `payment_id` int(13) NOT NULL AUTO_INCREMENT,
-  `customer_id` int(100) NOT NULL,
+  `payment_id` int(50) NOT NULL AUTO_INCREMENT,
+  `customer_id` int(50) NOT NULL,
   `payment_type` varchar(20) NOT NULL,
   `firstname` varchar(100) NOT NULL,
   `lastname` varchar(100) NOT NULL,
@@ -192,7 +205,7 @@ INSERT INTO `payment_method` (`payment_id`, `customer_id`, `payment_type`, `firs
 
 DROP TABLE IF EXISTS `product`;
 CREATE TABLE IF NOT EXISTS `product` (
-  `product_id` varchar(20) NOT NULL,
+  `product_id` int(50) NOT NULL,
   `product_name` varchar(100) NOT NULL,
   `product_price` char(20) NOT NULL,
   PRIMARY KEY (`product_id`)
@@ -206,8 +219,8 @@ CREATE TABLE IF NOT EXISTS `product` (
 
 DROP TABLE IF EXISTS `productorder`;
 CREATE TABLE IF NOT EXISTS `productorder` (
-  `order_id` int(20) NOT NULL AUTO_INCREMENT,
-  `customer_id` int(100) NOT NULL,
+  `order_id` int(50) NOT NULL AUTO_INCREMENT,
+  `customer_id` int(50) NOT NULL,
   `purchase_amount` int(20) NOT NULL,
   PRIMARY KEY (`order_id`),
   KEY `customer_id` (`customer_id`)
@@ -221,8 +234,8 @@ CREATE TABLE IF NOT EXISTS `productorder` (
 
 DROP TABLE IF EXISTS `shippingmethod`;
 CREATE TABLE IF NOT EXISTS `shippingmethod` (
-  `shipping_id` varchar(100) NOT NULL,
-  `order_id` int(100) NOT NULL,
+  `shipping_id` int(50) NOT NULL,
+  `order_id` int(50) NOT NULL,
   `street` varchar(100) NOT NULL,
   `city` varchar(100) NOT NULL,
   `state` varchar(2) NOT NULL,
@@ -241,7 +254,7 @@ CREATE TABLE IF NOT EXISTS `shippingmethod` (
 
 DROP TABLE IF EXISTS `supplier`;
 CREATE TABLE IF NOT EXISTS `supplier` (
-  `supplier_id` varchar(20) NOT NULL,
+  `supplier_id` int(50) NOT NULL,
   `supplier_name` varchar(100) NOT NULL,
   `street` varchar(100) NOT NULL,
   `city` varchar(100) NOT NULL,
