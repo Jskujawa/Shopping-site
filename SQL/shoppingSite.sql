@@ -120,6 +120,8 @@ CREATE TABLE IF NOT EXISTS `inventory` (
   KEY `product_id` (`product_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
+INSERT INTO inventory (inventory_id, product_id, quantity_on_hand)
+VALUES ('7777','102254','50');
 
 -- --------------------------------------------------------
 
@@ -127,15 +129,18 @@ CREATE TABLE IF NOT EXISTS `inventory` (
 -- Table structure for table `inventoryorder`
 --
 
-DROP TABLE IF EXISTS `inventoryorder`;
-CREATE TABLE IF NOT EXISTS `inventoryorder` (
+DROP TABLE IF EXISTS `inventory_order`;
+CREATE TABLE IF NOT EXISTS `inventory_order` (
   `supplier_id` int(50) NOT NULL,
   `inventory_id` int(50) NOT NULL,
   `quantity` int(100) NOT NULL,
-  `order_date` char(10) NOT NULL,
-  `expected_arrival_date` char(10) NOT NULL,
+  `order_date` char(15) NOT NULL,
+  `expected_arrival_date` char(15) NOT NULL,
   PRIMARY KEY (`supplier_id`,`inventory_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+INSERT INTO inventory_order (supplier_id, inventory_id, quantity, order_date, expected_arrival_date)
+VALUES ('33378','7777','50','4/30/2019','5/7/2019');
 
 -- --------------------------------------------------------
 
@@ -155,6 +160,7 @@ CREATE TABLE IF NOT EXISTS `inventoryreturn` (
   KEY `order_id` (`order_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
+
 -- --------------------------------------------------------
 
 --
@@ -169,6 +175,8 @@ CREATE TABLE IF NOT EXISTS `orderline` (
   PRIMARY KEY (`order_id`,`product_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
+INSERT INTO orderline (order_id, product_id, quantity)
+VALUES ('22288897','2354','1');
 -- --------------------------------------------------------
 
 --
@@ -211,6 +219,10 @@ CREATE TABLE IF NOT EXISTS `product` (
   PRIMARY KEY (`product_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
+INSERT INTO product (product_id, product_name, product_price)
+VALUES ('2354','Orange Halter Tank','$27.99'),
+('2367','Black Flow Dress','$52.99');
+
 -- --------------------------------------------------------
 
 --
@@ -221,10 +233,14 @@ DROP TABLE IF EXISTS `productorder`;
 CREATE TABLE IF NOT EXISTS `productorder` (
   `order_id` int(50) NOT NULL AUTO_INCREMENT,
   `customer_id` int(50) NOT NULL,
-  `purchase_amount` int(20) NOT NULL,
+  `purchase_amount` varchar(20) NOT NULL,
   PRIMARY KEY (`order_id`),
   KEY `customer_id` (`customer_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+INSERT INTO productorder (order_id, customer_id, purchase_amount)
+VALUES ('22288897','1234','$159.87'),
+('22288898','2222','$80.74');
 
 -- --------------------------------------------------------
 
@@ -246,6 +262,10 @@ CREATE TABLE IF NOT EXISTS `shippingmethod` (
   KEY `order_id` (`order_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
+INSERT INTO shippingmethod (shipping_id, order_id, street, city, state, zipcode, departure_date, delivery_date)
+VALUES ('321','22288897','865 Circle Ave.','Pheonix','AZ','94103','4/20/2019','5/7/2019'),
+('322','22288898','900 3 Ave.','New York City','NY','65991','4/15/2019','4/22/2019');
+
 -- --------------------------------------------------------
 
 --
@@ -264,7 +284,14 @@ CREATE TABLE IF NOT EXISTS `supplier` (
   `phone` bigint(15) NOT NULL,
   PRIMARY KEY (`supplier_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-COMMIT;
+
+INSERT INTO supplier (supplier_id, supplier_name, street, city, state, zipcode, email, phone)
+VALUES ('1','West Coast Outerwear','803 Sunny Street','LA','CA','76992','order@wco.com','9642231875'),
+('2','Textiles and Co.','71 N Border Street','Denver','CO','22378','order@textilesco.com','2657789885'),
+('3','Backcountry Suppliers Ltd.','39 3rd Avenue #26','NYC','NY','13368','order@backcountrysupply.com','3665987445');
+
+
+
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
