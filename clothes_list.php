@@ -32,8 +32,24 @@ $conn->close();
 	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-
-
+	<div>
+		<span>
+				<span>
+					Current User:   <strong>
+						<?php 
+						IF(isset($_SESSION['username'])){
+						echo $_SESSION['username'];
+						}?></strong>
+					<a href = 'php_files/logout.php'> <input type="button" value="Logout"/></a>
+				</span>
+				<a href = 'account.php'> 
+					<input type="button" value="Your Account"/>
+				</a>
+				<a href = 'shoppingcart.php'> 
+					<input type="button" value="Shopping Cart"/>
+				</a>
+			</span>
+	</div>
 <div class="text-center">  
 	<img src="./picture/logo.png" alt="brand" width="100" height="100">
 	<h5>Suburban Outfitters</h5>
@@ -92,9 +108,7 @@ $conn->close();
 			</div>
 		</div>
 		
-	<div class="col-sm-offset-10 col-sm-3">
-		<button class="btn" type="submit" name="btnsubmit">Your Account</button>
-	</div>
+
 		<br>
 		<br>
 		<br>
