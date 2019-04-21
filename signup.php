@@ -30,6 +30,7 @@
 									} else{
 										echo $_SESSION['signupMessage'];
 									}
+								$_SESSION['signupMessage'] = "";
 								?>
 							</font>
 						  </h3>

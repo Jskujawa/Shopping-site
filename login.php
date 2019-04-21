@@ -34,6 +34,7 @@
 									} else{
 										echo $_SESSION['loginMessage'];
 									}
+								$_SESSION['loginMessage'] ="";
 								?>
 							</font>
 						  </h3>
