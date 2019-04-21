@@ -1,3 +1,27 @@
+<?php
+session_start(); 
+
+if(!isset($_SESSION['username']))
+	{ $_SESSION['loginMessage'] = "Please Login First";
+		header("Location: login.php");}
+
+require_once  'php_files/dblogin.php';
+
+$conn = new mysqli($hn, $un, $pw, $db);
+if($conn->connect_error) die($conn->connect_error);
+
+$query = "SELECT * FROM `product`";
+$result=$conn->query($query); 
+if(!$result) die($conn->error);
+
+//echo "this works";
+
+$rows = $result->num_rows;
+
+$conn->close();
+
+?>
+
 
 <html>
 <head>
@@ -13,7 +37,6 @@
 <div class="text-center">  
 	<img src="./picture/logo.png" alt="brand" width="100" height="100">
 	<h5>Suburban Outfitters</h5>
-
 </div>
  
 <div class="container">
