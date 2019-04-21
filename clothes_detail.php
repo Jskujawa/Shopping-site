@@ -1,3 +1,33 @@
+<?php
+session_start(); 
+
+if(!isset($_SESSION['username']))
+	{ $_SESSION['loginMessage'] = "Please Login First";
+		header("Location: login.php");
+		die();}
+
+require_once  'php_files/dblogin.php';
+
+$conn = new mysqli($hn, $un, $pw, $db);
+if($conn->connect_error) die($conn->connect_error);
+
+$productId = '8989' ;//$_POST['productId']; product ID from clothes-list page. Placeholder for now
+
+$query = "SELECT * from `product` where product_id = $productId LIMIT 1"; 
+
+
+$result = $conn->query($query);
+if(!$result) die($conn->error);
+	
+$row = $result->fetch_array(MYSQLI_ASSOC);
+
+
+
+$conn->close();
+
+?>
+
+
 <html>
 <head>
 	<meta charset="utf-8"> 
@@ -8,7 +38,24 @@
 	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-
+	<div>
+		<span>
+				<span>
+					Current User:   <strong>
+						<?php 
+						IF(isset($_SESSION['username'])){
+						echo $_SESSION['username'];
+						}?></strong>
+					<a href = 'php_files/logout.php'> <input type="button" value="Logout"/></a>
+				</span>
+				<a href = 'account.php'> 
+					<input type="button" value="Your Account"/>
+				</a>
+				<a href = 'shoppingcart.php'> 
+					<input type="button" value="Shopping Cart"/>
+				</a>
+		</span>
+	</div>
 
 	<div class="text-center">  
 		<img src="./picture/logo.png" alt="brand" width="100" height="100">
@@ -24,14 +71,14 @@
 			<img src="./picture/dress.jpg" class="img-response" alt="Airaisa" width="350" height="470"> 
 		</div>	
 		<div class="col-sm-7">
-			<h4>Clothes Name</h4>
-			<h1>Price $ xx.xx</h1>
+			<h4><?php echo $row['product_name']?></h4>
+			<h1><?php echo "Price: ".'$'.$row['product_price']?></h1>
     <br>
     <br>
     <br>
     <br>			
 		<form action="" method="POST"> 
-            <div>
+          <!--  <div>
 				<label>Size/Colour:</label> 
 				<select name=""> 
 					<option value="0">S</option> 
@@ -48,9 +95,9 @@
             </select> 
 			</div>
 	<br>
-	<br>
-			<div class="col-sm-offset-7 col-sm-4">
-			<button class="btn" type="submit" name="btnsubmit">add to cart</button>
+	<br> -->
+			<div class="col-sm-offset-1 col-sm-4">
+			<button class="btn-lg" type="submit" name="btnsubmit">add to cart</button>
 			</div>
 		</form> 
 		</div>
