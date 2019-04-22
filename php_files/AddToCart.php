@@ -25,7 +25,7 @@ echo $qtyOnHand."<br>" ;
 		
 //$conn = new mysqli($hn, $un, $pw, $db);
 //if($conn->connect_error) die($conn->connect_error);
- IF( isset($_SESSION['cart'])){
+ IF( !empty($_SESSION['cart'])){
 	 array_push($_SESSION['cart'],$productId );	 
  }
  else{
@@ -37,6 +37,7 @@ echo $qtyOnHand."<br>" ;
 //print_r($_SESSION['cart']);//going to use cart array variable in the session 
 //$conn->close();
  $_SESSION['clothesListMessage'] = "Item successfully added to cart";
+
  header("Location: ../clothes_list.php");
 
 ?>

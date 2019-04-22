@@ -86,12 +86,12 @@ $cart = $_SESSION['cart'];
 						<div class="panel-body" >
 							<?php
 								$j=0;
+								IF (!empty($cart)){
 								foreach ($cart as $columnName => $columnData) {
 								$query = "Select * FROM `product` where product_id = $columnData";
 								$result = $conn->query($query);
 								if(!$result) die($conn->error);
 								$row = $result->fetch_array(MYSQLI_ASSOC);
-								
 								
 								
 								echo <<<_END
@@ -107,14 +107,15 @@ $cart = $_SESSION['cart'];
 									</div>
 								</div>
 _END;
-
+								$j++;
 								//echo $row['product_name'] . '------- $' . $row['product_price'] . '<br />';
+								}
 								}
 							?>
 							<div class="panel-footer">
-								<button class="btn btn-lg" type="submit" name="btnsubmit">Checkout</button>
+								<a href = 'checkout.php'> <button class="btn btn-lg" type="submit" name="btnsubmit">Checkout</button><a/>
 								<br><br>
-								<form action="emptyCart.php"><button class="btn btn-md" type="submit" name="emptycart" >Empty Cart</button> </form>								
+								<form action="php_files/emptyCart.php"><button class="btn btn-md" type="submit" name="emptycart" >Empty Cart</button> </form>								
 							</div>
 						</div>      
 					</div>       
