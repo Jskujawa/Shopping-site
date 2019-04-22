@@ -53,6 +53,7 @@ $conn->close();
 <div class="text-center">  
 	<img src="./picture/logo.png" alt="brand" width="100" height="100">
 	<h5>Suburban Outfitters</h5>
+			
 </div>
  
 <div class="container">
@@ -91,7 +92,7 @@ $conn->close();
 		<a href="clothes_detail.html"><img src="./picture/7.jpg" class="img-response" alt="clothesreview" width="200" height="90"></a>
 		
 	</div>
-
+		
 
 
         <div class="container">
@@ -108,6 +109,19 @@ $conn->close();
 			</div>
 		</div>
 		
+		<div>
+			<h2 style = "text-align:center;"><font color="red">
+			<?php 
+			//Returns Messages on page depending on success or failure of other php pages
+			if(empty($_SESSION['clothesListMessage'])){
+					echo "";
+				} else{
+					echo $_SESSION['clothesListMessage'];
+				}
+			$_SESSION['clothesListMessage'] ="";
+			?>
+			</font></h2>
+		</div>
 
 		<br>
 		<br>

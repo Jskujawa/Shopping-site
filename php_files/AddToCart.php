@@ -33,9 +33,10 @@ echo $qtyOnHand."<br>" ;
  }
 //Add productId to session variable that is an array
  //$_SESSION['cart'] = [$productId];
-
-print_r($_SESSION['cart']);//going to use cart array variable in the session 
+//$_SESSION['cart'] = [$productId,85,55];
+//print_r($_SESSION['cart']);//going to use cart array variable in the session 
 //$conn->close();
-
+ $_SESSION['clothesListMessage'] = "Item successfully added to cart";
+ header("Location: ../clothes_list.php");
 
 ?>
