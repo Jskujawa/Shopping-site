@@ -57,7 +57,7 @@ $conn->close();
 		</span>
 	</div>
 
-	<div class="text-center">  
+	<div class="text-center"> 
 		<img src="./picture/logo.png" alt="brand" width="100" height="100">
 		<h5>Suburban Outfitters</h5>
 	</div>
@@ -68,7 +68,10 @@ $conn->close();
 <div class="container">
 	<div class = "row">
 		<div class=" col-sm-4">              
-			<img src="./picture/dress.jpg" class="img-response" alt="Airaisa" width="350" height="470"> 
+			<img src="./picture/dress.jpg" class="img-response" alt="Airaisa" width="350" height="470">
+			<!-- Preston Edits-->
+			<?php echo "<img src='{$row['image_path']} width='350' height='470''>";?>
+			<!-- Preston Edits End-->
 		</div>	
 		<div class="col-sm-8">
 			<h1><strong><?php echo $row['product_name']?></strong></h1>
@@ -85,6 +88,15 @@ $conn->close();
 			 <div class=" col-sm-4">
 				<button class="btn-lg" type="submit" name="btnsubmit">Add to Cart</button>
 			</div>
+<!-- Preston Edits-->
+		<form action="php_files/clothes_update.php" method="POST"> 
+			<input type = 'hidden' name='productId' value =<?php print $row['product_id'];?>>
+			<input type = 'hidden' name='price' value =<?php print $row['product_price'];?>>
+			<input type = 'hidden' name='qtyOnHand' value =<?php print $inv['quantity_on_hand'];?>>
+			 <div class=" col-sm-4">
+				<button class="btn-lg" type="submit" name="btnsubmit">Add to Cart</button>
+			</div>
+<!-- Preston Edits End-->
 				<!--REMOVING BELOW CODE FOR SIZE AND QTY AS OUR DATABASE HAS NO FUNCTIONALITY FOR THIS
 				<div>
 				<label>Size/Colour:</label> 
