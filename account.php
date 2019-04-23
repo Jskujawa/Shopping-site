@@ -54,35 +54,35 @@ $row = $result->fetch_array(MYSQLI_ASSOC);
 						
 						<form class="panel-body" action="php_files/account_update.php" method='post'>
 								<div class = "form-group">
-									<input class="form-control" id="firstname" name="firstname" placeholder="<?php print $row['firstname']?>" type="text" required>
+									<input class="form-control" id="firstname" name="firstname" placeholder="<?php print $row['firstname']?>" type="text">
 								</div>
 								<div class = "form-group">	
-									<input class="form-control" id="lastname" name="lastname" placeholder="<?php print $row['lastname']?>" type="text" required>
+									<input class="form-control" id="lastname" name="lastname" placeholder="<?php print $row['lastname']?>" type="text">
 								</div>
 								<div class = "form-group">
-									<input class="form-control" id="email" name="email" placeholder="<?php print $row['email']?>" type="text" required>
+									<input class="form-control" id="email" name="email" placeholder="<?php print $row['email']?>" type="text">
 								</div>
 								<div class = "form-group">
-									<input class="form-control" id="street" name="street" placeholder="<?php print $row['street']?>" type="text" required>
+									<input class="form-control" id="street" name="street" placeholder="<?php print $row['street']?>" type="text">
 								</div>
 								<div class = "form-group">
-									<input class="form-control" id="city" name="city" placeholder="<?php print $row['city']?>" type="text" required>
+									<input class="form-control" id="city" name="city" placeholder="<?php print $row['city']?>" type="text">
 								</div>
 								<div class = "form-group">
-									<input class="form-control" maxlength="2" id="state" name="state" placeholder="<?php print $row['state']?>" type="text" required>
+									<input class="form-control" maxlength="2" id="state" name="state" placeholder="<?php print $row['state']?>" type="text">
 								</div>
 								<div class = "form-group">
-									<input class="form-control" id="zipcode" name="zipcode" placeholder="<?php print $row['zipcode']?>" type="text" required>
+									<input class="form-control" id="zipcode" name="zipcode" placeholder="<?php print $row['zipcode']?>" type="text">
 								</div>
 								<div class = "form-group">
-									<input class="form-control" id="phone" name="phone" placeholder="<?php print $row['phone']?>" type="text">
+									<input class="form-control" id="phone" name="phone" placeholder="<?php print $row['phone']?>" type="number">
 								</div>
-								<a href = 'login.php'> 
-									<div class="panel-footer">
-									<button class="btn btn-lg" type="submit">Submit</button>
-									</div>
-								</a>
-							
+								<div class = "form-group">
+									<input class="form-control" id="customer_id" name="customer_id" value="<?php print intval($row['customer_id'])?>" type="hidden">
+								</div> 								
+								<div class="panel-footer">
+									<button class="btn btn-lg" name="btnsubmit" type="submit">Submit</button>
+								</div>							
 						</form>      
 					</div>       
 					<div class="col-sm-4 col-xs-12">
