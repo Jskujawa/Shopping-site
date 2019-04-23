@@ -198,7 +198,7 @@ INSERT INTO `payment_method` (`payment_id`, `customer_id`, `payment_type`, `firs
 VALUES('336','1234','Visa','Walter','White','1234123412341230','08/22','123'),
 ('997','2222','Mastercard','Peter','Parker','8763926408215390','09/24','343'),
 ('585','3635','Amex','Scarlett','Widow','2358896478112640','06/25','689'),
-('336','18995','Visa','Tony','Stark','2003987456687150','03/20','316'),
+('337','18995','Visa','Tony','Stark','2003987456687150','03/20','316'),
 ('125','644597','Discover','Rachel','Green','2337855603145790','11/23','257');
 
 
@@ -224,9 +224,6 @@ DROP TABLE IF EXISTS `productorder`;
 CREATE TABLE IF NOT EXISTS `productorder` (
   `order_id` int(50) NOT NULL AUTO_INCREMENT,
   `customer_id` int(50) NOT NULL,
-  `purchase_amount` varchar(20) NOT NULL,
-  `order_id` int(20) NOT NULL AUTO_INCREMENT,
-  `customer_id` int(100) NOT NULL,
   `purchase_amount` float NOT NULL,
   PRIMARY KEY (`order_id`),
   KEY `customer_id` (`customer_id`)

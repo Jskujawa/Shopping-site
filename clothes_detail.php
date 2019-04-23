@@ -11,14 +11,17 @@ require_once  'php_files/dblogin.php';
 $conn = new mysqli($hn, $un, $pw, $db);
 if($conn->connect_error) die($conn->connect_error);
 
-$productId = '8989' ;//$_POST['productId']; product ID from clothes-list page. Placeholder for now
+if(isset($_POST['product_id'])){
+	
+	$product_list = $_POST['product_id'];
+}
 
-$query = "SELECT * from `product` where product_id = $productId LIMIT 1"; 
+$query = "SELECT * from product where product_id = $product_list"; 
 $result = $conn->query($query);
 if(!$result) die($conn->error);
 $row = $result->fetch_array(MYSQLI_ASSOC);
 
-$query2 = "Select * from `inventory` where product_id = $productId LIMIT 1";
+$query2 = "Select * from inventory where product_id = $product_list";
 $result2 = $conn->query($query2);
 if(!$result2) die($conn->error);
 $inv = $result2->fetch_array(MYSQLI_ASSOC);
@@ -36,6 +39,8 @@ $conn->close();
 	<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">  
 	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
 	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
 	<div>
@@ -68,11 +73,7 @@ $conn->close();
 <div class="container">
 	<div class = "row">
 		<div class=" col-sm-4">              
-			<img src="./picture/dress.jpg" class="img-response" alt="Dress" width="350" height="470">
-			<!-- Preston Edits TRY USING THIS! It worked for me <img src=<?php //print $row['image_path'];?> class="img-response" alt="Dress2" width="350" height="470">-->
-			<?php echo "<img src='{$row['image_path']} width='350' height='470''>";
-			?>
-			<!-- Preston Edits End-->
+			<img src=<?php print $row['image_path'];?> class="img-response" alt="Dress2" width="350" height="470">
 		</div>	
 		<div class="col-sm-8">
 			<h1><strong><?php echo $row['product_name']?></strong></h1>
