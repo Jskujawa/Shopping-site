@@ -13,6 +13,11 @@ if($conn->connect_error) die($conn->connect_error);
 
 
 //print_r($_SESSION['cart']);
+IF(!isset($_SESSION['cart']))
+	{
+	$_SESSION['cart'] = [];
+	}
+
 
 $cart = $_SESSION['cart'];
 
@@ -103,7 +108,11 @@ $cart = $_SESSION['cart'];
 										<p>$$row[product_price]</p>
 									</div>
 									<div class="col-md-2">
-										<button class = "btn btn-xs" id=$j> Remove </button>
+										<form id= "$j.form" name="myForm" method='post' action="php_files/removeFromCart.php">
+											<button class = "btn btn-xs" id=$j.remove> Remove </button>
+											<input type = 'hidden'  name='removeItem' value = $row[product_id]>
+											<input type = 'hidden'  name='removeItem' value = $j>
+										</form>
 									</div>
 								</div>
 _END;
@@ -112,6 +121,7 @@ _END;
 								}
 								}
 							?>
+							<script>document.getElementById("$j.remove").onclick = function(){document.getElementById("$j.form").submit();};</script>
 							<div class="panel-footer">
 								<a href = 'checkout.php'> <button class="btn btn-lg" type="submit" name="btnsubmit">Checkout</button><a/>
 								<br><br>
