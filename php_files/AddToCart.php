@@ -9,13 +9,13 @@ session_start();
 
 if(!isset($_SESSION['username']))
 	{ $_SESSION['loginMessage'] = "Please Login First";
-		header("Location: login.php");
+		header("Location: ../login.php");
 		die();}
 		
 //Check if quantity_on_hand > 0, if not send back to clothes_list		
 if($qtyOnHand<=0){
 	 $_SESSION['clothesListMessage'] = "Sorry, we have no more of that item in stock";
-		header("Location: clothes_list.php");
+		header("Location: ../clothes_list.php");
 		die();
 	}	
 
