@@ -68,9 +68,10 @@ $conn->close();
 <div class="container">
 	<div class = "row">
 		<div class=" col-sm-4">              
-			<img src="./picture/dress.jpg" class="img-response" alt="Airaisa" width="350" height="470">
-			<!-- Preston Edits-->
-			<?php echo "<img src='{$row['image_path']} width='350' height='470''>";?>
+			<img src="./picture/dress.jpg" class="img-response" alt="Dress" width="350" height="470">
+			<!-- Preston Edits TRY USING THIS! It worked for me <img src=<?php //print $row['image_path'];?> class="img-response" alt="Dress2" width="350" height="470">-->
+			<?php echo "<img src='{$row['image_path']} width='350' height='470''>";
+			?>
 			<!-- Preston Edits End-->
 		</div>	
 		<div class="col-sm-8">
@@ -94,7 +95,7 @@ $conn->close();
 			<input type = 'hidden' name='price' value =<?php print $row['product_price'];?>>
 			<input type = 'hidden' name='qtyOnHand' value =<?php print $inv['quantity_on_hand'];?>>
 			 <div class=" col-sm-4">
-				<button class="btn-lg" type="submit" name="btnsubmit">Add to Cart</button>
+				<button class="btn-lg" type="submit" name="btnsubmit">Update Item</button>
 			</div>
 <!-- Preston Edits End-->
 				<!--REMOVING BELOW CODE FOR SIZE AND QTY AS OUR DATABASE HAS NO FUNCTIONALITY FOR THIS
