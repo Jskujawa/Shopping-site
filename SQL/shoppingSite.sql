@@ -213,9 +213,9 @@ CREATE TABLE IF NOT EXISTS `product` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 
-INSERT INTO product (product_id, product_name, product_price)
-VALUES ('2354','Orange Halter Tank','27.99'),
-('2367','Black Flow Dress','52.99');
+INSERT INTO product (product_id, product_name, product_price, image_path)
+VALUES ('2354','Orange Halter Tank','27.99', ./picture/8.jpg),
+('2367','Black Flow Dress','52.99', ./picture/dress.jpg);
 
 
 
