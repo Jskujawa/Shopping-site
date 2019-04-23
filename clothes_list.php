@@ -1,3 +1,27 @@
+<?php
+session_start(); 
+
+if(!isset($_SESSION['username']))
+	{ $_SESSION['loginMessage'] = "Please Login First";
+		header("Location: login.php");}
+
+require_once  'php_files/dblogin.php';
+
+$conn = new mysqli($hn, $un, $pw, $db);
+if($conn->connect_error) die($conn->connect_error);
+
+$query = "SELECT * FROM `product`";
+$result=$conn->query($query); 
+if(!$result) die($conn->error);
+
+//echo "this works";
+
+$rows = $result->num_rows;
+
+$conn->close();
+
+?>
+
 
 <html>
 <head>
@@ -8,12 +32,28 @@
 	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-
-
+	<div>
+		<span>
+				<span>
+					Current User:   <strong>
+						<?php 
+						IF(isset($_SESSION['username'])){
+						echo $_SESSION['username'];
+						}?></strong>
+					<a href = 'php_files/logout.php'> <input type="button" value="Logout"/></a>
+				</span>
+				<a href = 'account.php'> 
+					<input type="button" value="Your Account"/>
+				</a>
+				<a href = 'shoppingcart.php'> 
+					<input type="button" value="Shopping Cart"/>
+				</a>
+			</span>
+	</div>
 <div class="text-center">  
 	<img src="./picture/logo.png" alt="brand" width="100" height="100">
 	<h5>Suburban Outfitters</h5>
-
+			
 </div>
  
 <div class="container">
@@ -52,7 +92,7 @@
 		<a href="clothes_detail.html"><img src="./picture/7.jpg" class="img-response" alt="clothesreview" width="200" height="90"></a>
 		
 	</div>
-
+		
 
 
         <div class="container">
@@ -69,22 +109,33 @@
 			</div>
 		</div>
 		
-	<div class="col-sm-offset-10 col-sm-3">
-		<button class="btn" type="submit" name="btnsubmit">Your Account</button>
-	</div>
+		<div>
+			<h2 style = "text-align:center;"><font color="red">
+			<?php 
+			//Returns Messages on page depending on success or failure of other php pages
+			if(empty($_SESSION['clothesListMessage'])){
+					echo "";
+				} else{
+					echo $_SESSION['clothesListMessage'];
+				}
+			$_SESSION['clothesListMessage'] ="";
+			?>
+			</font></h2>
+		</div>
+
 		<br>
 		<br>
 		<br>
 	<div class = "row">
 		<div class="col-sm-3">    
-			<a href="clothes_detail.html"><img src="./picture/9.jpg" class="img-response" alt="foodreview" width="190" height="200
+			<a href="clothes_detail.php"><img src="./picture/9.jpg" class="img-response" alt="foodreview" width="190" height="200
 			"></a>
-			<a href="clothes_detail.html"><h2>$49.99</h2></a>  
+			<a href="clothes_detail.php"><h2>$49.99</h2></a>  
 			<p> Beautiful summer dress with Length:Short Material:Polyester Style:Boho Details:Belted, Knot Pattern </p>
 		</div>
 	
 		<div class="col-sm-3">    
-			<a href="clothes_detail.html"><img src="./picture/9.jpg" class="img-response" alt="foodreview" width="190" height="200
+			<a href="clothes_detail.php"><img src="./picture/9.jpg" class="img-response" alt="foodreview" width="190" height="200
 			"></a>
 			<a href="clothes_detail.html"><h2>$49.99</h2></a>  
 			<p> Beautiful summer dress with Length:Short Material:Polyester Style:Boho Details:Belted, Knot Pattern</p>

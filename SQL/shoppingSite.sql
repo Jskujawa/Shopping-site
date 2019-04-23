@@ -1,11 +1,4 @@
--- phpMyAdmin SQL Dump
--- version 4.8.4
--- https://www.phpmyadmin.net/
---
--- Host: 127.0.0.1:3306
--- Generation Time: Apr 14, 2019 at 06:24 PM
--- Server version: 5.7.24
--- PHP Version: 7.2.14
+
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -49,8 +42,8 @@ INSERT INTO `account` (`username`, `password`, `role`, `customer_id`) VALUES
 ('SpiderMan', 'UncleBen', 'customer', 2222),
 ('Scarletwid', 'pass2349', 'customer', 3635),
 ('TonyS', '900loginpass', 'customer', 18995),
-('RachelGren', 'super90078', 'customer', 644597);
--- --------------------------------------------------------
+('RachelGreen', 'super90078', 'customer', 644597);
+
 
 --
 -- Table structure for table `campaign`
@@ -62,15 +55,20 @@ CREATE TABLE IF NOT EXISTS `campaign` (
   `campaign_type` varchar(100) NOT NULL,
   `campaign_beg_date` char(30) NOT NULL,
   `campaign_end_date` char(30) NOT NULL,
+  `campaign_beg_date` date NOT NULL,
+  `campaign_end_date` date NOT NULL,
   PRIMARY KEY (`campaign_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=4445 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `campaign`
+--
+
 
 INSERT INTO campaign (campaign_id, campaign_type, campaign_beg_date, campaign_end_date)
-VALUES ('399654','Spring Sale','March 31, 2019','April 30, 2019'),
-('122654','10% Student Discount','N/A','N/A');
+VALUES ('399654','Spring Sale','2019-03-31','2019-04-30');
 
 
--- --------------------------------------------------------
 
 --
 -- Table structure for table `customer`
@@ -90,7 +88,7 @@ CREATE TABLE IF NOT EXISTS `customer` (
   `phone` bigint(15) NOT NULL,
   PRIMARY KEY (`customer_id`),
   KEY `campaign_id` (`campaign_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2223 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=5556 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `customer`
@@ -105,8 +103,6 @@ INSERT INTO customer (customer_id, campaign_id, firstname, lastname, street, cit
 ('644597','399654','Rachel','Green','300 4 Ave. Apartment. #5','NYC','NY','65874','rachelgreen56@gmail.com',2036648892);
 
 
--- --------------------------------------------------------
-
 --
 -- Table structure for table `inventory`
 --
@@ -120,10 +116,10 @@ CREATE TABLE IF NOT EXISTS `inventory` (
   KEY `product_id` (`product_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
+
 INSERT INTO inventory (inventory_id, product_id, quantity_on_hand)
 VALUES ('7777','102254','50');
 
--- --------------------------------------------------------
 
 --
 -- Table structure for table `inventoryorder`
@@ -139,10 +135,10 @@ CREATE TABLE IF NOT EXISTS `inventory_order` (
   PRIMARY KEY (`supplier_id`,`inventory_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
-INSERT INTO inventory_order (supplier_id, inventory_id, quantity, order_date, expected_arrival_date)
-VALUES ('33378','7777','50','4/30/2019','5/7/2019');
 
--- --------------------------------------------------------
+INSERT INTO inventory_order (supplier_id, inventory_id, quantity, order_date, expected_arrival_date)
+VALUES ('33378','7777','50','2019-04-30','2019-05-07');
+
 
 --
 -- Table structure for table `inventoryreturn`
@@ -161,11 +157,11 @@ CREATE TABLE IF NOT EXISTS `inventoryreturn` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 
--- --------------------------------------------------------
 
---
--- Table structure for table `orderline`
---
+INSERT INTO `inventoryreturn` (`return_id`, `inventory_id`, `order_id`, `return_date`, `return_amount`, `quantity`) VALUES
+('3333', '7777', 89, '2019-06-12', '145.99', 2);
+
+
 
 DROP TABLE IF EXISTS `orderline`;
 CREATE TABLE IF NOT EXISTS `orderline` (
@@ -175,13 +171,12 @@ CREATE TABLE IF NOT EXISTS `orderline` (
   PRIMARY KEY (`order_id`,`product_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
+
 INSERT INTO orderline (order_id, product_id, quantity)
 VALUES ('22288897','2354','1');
--- --------------------------------------------------------
 
---
--- Table structure for table `payment_method`
---
+
+
 
 DROP TABLE IF EXISTS `payment_method`;
 CREATE TABLE IF NOT EXISTS `payment_method` (
@@ -195,21 +190,18 @@ CREATE TABLE IF NOT EXISTS `payment_method` (
   `security_code` int(3) NOT NULL,
   PRIMARY KEY (`payment_id`),
   KEY `customer_id` (`customer_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=6667 DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `payment_method`
---
 
-INSERT INTO `payment_method` (`payment_id`, `customer_id`, `payment_type`, `firstname`, `lastname`, `card_number`, `expiration`, `security_code`) VALUES
-(1, 1234, 'visa', 'Walter', 'White', 1234123412341234, '08/22', 123),
-(2, 2222, 'mastercard', 'Peter', 'Parker', 8763926408215394, '09/24', 343);
 
--- --------------------------------------------------------
+INSERT INTO `payment_method` (`payment_id`, `customer_id`, `payment_type`, `firstname`, `lastname`, `card_number`, `expiration`, `security_code`)
+VALUES('336','1234','Visa','Walter','White','1234123412341230','08/22','123'),
+('997','2222','Mastercard','Peter','Parker','8763926408215390','09/24','343'),
+('585','3635','Amex','Scarlett','Widow','2358896478112640','06/25','689'),
+('336','18995','Visa','Tony','Stark','2003987456687150','03/20','316'),
+('125','644597','Discover','Rachel','Green','2337855603145790','11/23','257');
 
---
--- Table structure for table `product`
---
+
 
 DROP TABLE IF EXISTS `product`;
 CREATE TABLE IF NOT EXISTS `product` (
@@ -219,34 +211,32 @@ CREATE TABLE IF NOT EXISTS `product` (
   PRIMARY KEY (`product_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
+
 INSERT INTO product (product_id, product_name, product_price)
-VALUES ('2354','Orange Halter Tank','$27.99'),
-('2367','Black Flow Dress','$52.99');
+VALUES ('2354','Orange Halter Tank','27.99'),
+('2367','Black Flow Dress','52.99');
 
--- --------------------------------------------------------
 
---
--- Table structure for table `productorder`
---
+
 
 DROP TABLE IF EXISTS `productorder`;
 CREATE TABLE IF NOT EXISTS `productorder` (
   `order_id` int(50) NOT NULL AUTO_INCREMENT,
   `customer_id` int(50) NOT NULL,
   `purchase_amount` varchar(20) NOT NULL,
+  `order_id` int(20) NOT NULL AUTO_INCREMENT,
+  `customer_id` int(100) NOT NULL,
+  `purchase_amount` float NOT NULL,
   PRIMARY KEY (`order_id`),
   KEY `customer_id` (`customer_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=90 DEFAULT CHARSET=latin1;
+
+
 
 INSERT INTO productorder (order_id, customer_id, purchase_amount)
-VALUES ('22288897','1234','$159.87'),
-('22288898','2222','$80.74');
+VALUES ('22288897','1234','159.87'),
+('22288898','2222','80.74');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `shippingmethod`
---
 
 DROP TABLE IF EXISTS `shippingmethod`;
 CREATE TABLE IF NOT EXISTS `shippingmethod` (
@@ -262,15 +252,14 @@ CREATE TABLE IF NOT EXISTS `shippingmethod` (
   KEY `order_id` (`order_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
+
 INSERT INTO shippingmethod (shipping_id, order_id, street, city, state, zipcode, departure_date, delivery_date)
-VALUES ('321','22288897','865 Circle Ave.','Pheonix','AZ','94103','4/20/2019','5/7/2019'),
-('322','22288898','900 3 Ave.','New York City','NY','65991','4/15/2019','4/22/2019');
+VALUES ('321','22288897','865 Circle Ave.','Pheonix','AZ','94103','2019-04-20','2019-05-07'),
+('322','22288898','900 3 Ave.','New York City','NY','65991','2019-04-12','2019-04-17');
 
--- --------------------------------------------------------
 
---
--- Table structure for table `supplier`
---
+
+
 
 DROP TABLE IF EXISTS `supplier`;
 CREATE TABLE IF NOT EXISTS `supplier` (
@@ -285,11 +274,11 @@ CREATE TABLE IF NOT EXISTS `supplier` (
   PRIMARY KEY (`supplier_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
+
 INSERT INTO supplier (supplier_id, supplier_name, street, city, state, zipcode, email, phone)
 VALUES ('1','West Coast Outerwear','803 Sunny Street','LA','CA','76992','order@wco.com','9642231875'),
 ('2','Textiles and Co.','71 N Border Street','Denver','CO','22378','order@textilesco.com','2657789885'),
 ('3','Backcountry Suppliers Ltd.','39 3rd Avenue #26','NYC','NY','13368','order@backcountrysupply.com','3665987445');
-
 
 
 
