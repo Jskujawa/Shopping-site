@@ -11,17 +11,11 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
 
---
--- Database: `shoppingsite`
---
+
 CREATE DATABASE IF NOT EXISTS `shoppingsite` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
 USE `shoppingsite`;
 
--- --------------------------------------------------------
 
---
--- Table structure for table `account`
---
 
 DROP TABLE IF EXISTS `account`;
 CREATE TABLE IF NOT EXISTS `account` (
@@ -53,8 +47,8 @@ DROP TABLE IF EXISTS `campaign`;
 CREATE TABLE IF NOT EXISTS `campaign` (
   `campaign_id` int(20) NOT NULL AUTO_INCREMENT,
   `campaign_type` varchar(100) NOT NULL,
-  `campaign_beg_date` char(30) NOT NULL,
-  `campaign_end_date` char(30) NOT NULL,
+  `campaign_beg_date` date NOT NULL,
+  `campaign_end_date` date NOT NULL,
   PRIMARY KEY (`campaign_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=4445 DEFAULT CHARSET=latin1;
 
@@ -64,13 +58,12 @@ CREATE TABLE IF NOT EXISTS `campaign` (
 
 
 INSERT INTO campaign (campaign_id, campaign_type, campaign_beg_date, campaign_end_date)
-VALUES ('399654','Spring Sale','2019-03-31','2019-04-30');
+VALUES ('399654','Spring Sale','2019-03-31','2019-04-30'),
+('122654','10% Student Discount','2019-01-01','2019-12-31');
 
 
 
---
--- Table structure for table `customer`
---
+
 
 DROP TABLE IF EXISTS `customer`;
 CREATE TABLE IF NOT EXISTS `customer` (
@@ -88,9 +81,7 @@ CREATE TABLE IF NOT EXISTS `customer` (
   KEY `campaign_id` (`campaign_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=5556 DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `customer`
---
+
 
 INSERT INTO customer (customer_id, campaign_id, firstname, lastname, street, city, state, zipcode, email, phone)
  VALUES
@@ -101,9 +92,6 @@ INSERT INTO customer (customer_id, campaign_id, firstname, lastname, street, cit
 ('644597','399654','Rachel','Green','300 4 Ave. Apartment. #5','NYC','NY','65874','rachelgreen56@gmail.com',2036648892);
 
 
---
--- Table structure for table `inventory`
---
 
 DROP TABLE IF EXISTS `inventory`;
 CREATE TABLE IF NOT EXISTS `inventory` (
@@ -116,7 +104,14 @@ CREATE TABLE IF NOT EXISTS `inventory` (
 
 
 INSERT INTO inventory (inventory_id, product_id, quantity_on_hand)
-VALUES ('7777','102254','50');
+VALUES ('7777','102254','50'),
+('5687','2367','27'),
+('9663','6014','32'),
+('6331','3665','112'),
+('9755','6014','18'),
+('6144','6877','64'),
+('2056','3008','25');
+
 
 
 --
@@ -128,14 +123,16 @@ CREATE TABLE IF NOT EXISTS `inventory_order` (
   `supplier_id` int(50) NOT NULL,
   `inventory_id` int(50) NOT NULL,
   `quantity` int(100) NOT NULL,
-  `order_date` char(15) NOT NULL,
-  `expected_arrival_date` char(15) NOT NULL,
+  `order_date` date NOT NULL,
+  `expected_arrival_date` date NOT NULL,
   PRIMARY KEY (`supplier_id`,`inventory_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 
 INSERT INTO inventory_order (supplier_id, inventory_id, quantity, order_date, expected_arrival_date)
-VALUES ('33378','7777','50','2019-04-30','2019-05-07');
+VALUES ('112','7777','50','2019-04-30','2019-05-07'),
+('113','5687','83','2019-05-01','2019-05-11'),
+('114','9663','27','2019-05-07','2019-05-17');
 
 
 --
@@ -157,7 +154,7 @@ CREATE TABLE IF NOT EXISTS `inventoryreturn` (
 
 
 INSERT INTO `inventoryreturn` (`return_id`, `inventory_id`, `order_id`, `return_date`, `return_amount`, `quantity`) VALUES
-('3333', '7777', 89, '2019-06-12', '145.99', 2);
+('236', '7777', '22288898', '2019-06-12', '145.99', '2');
 
 
 
@@ -171,7 +168,12 @@ CREATE TABLE IF NOT EXISTS `orderline` (
 
 
 INSERT INTO orderline (order_id, product_id, quantity)
-VALUES ('22288897','2354','1');
+VALUES ('22288898','3665','2'),
+('22288897','2354','1'),
+('22288890','6014','1'),
+('22288891','6877','3'),
+('22288892','3008','1');
+
 
 
 
@@ -206,13 +208,14 @@ CREATE TABLE IF NOT EXISTS `product` (
   `product_id` int(50) NOT NULL,
   `product_name` varchar(100) NOT NULL,
   `product_price` char(20) NOT NULL,
+  `image_path` varchar (100) NOT NULL,
   PRIMARY KEY (`product_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 
-INSERT INTO product (product_id, product_name, product_price)
-VALUES ('2354','Orange Halter Tank','27.99'),
-('2367','Black Flow Dress','52.99');
+INSERT INTO product (product_id, product_name, product_price, image_path)
+VALUES ('2354','Orange Halter Tank','27.99', ./picture/8.jpg),
+('2367','Black Flow Dress','52.99', ./picture/dress.jpg);
 
 
 
@@ -230,7 +233,11 @@ CREATE TABLE IF NOT EXISTS `productorder` (
 
 INSERT INTO productorder (order_id, customer_id, purchase_amount)
 VALUES ('22288897','1234','159.87'),
-('22288898','2222','80.74');
+('22288898','2222','80.74'),
+('22288890','3635','90.36'),
+('22288891','18995','250.87'),
+('22288892','644597','178.99');
+
 
 
 DROP TABLE IF EXISTS `shippingmethod`;
@@ -241,8 +248,8 @@ CREATE TABLE IF NOT EXISTS `shippingmethod` (
   `city` varchar(100) NOT NULL,
   `state` varchar(2) NOT NULL,
   `zipcode` varchar(8) NOT NULL,
-  `departure_date` char(10) NOT NULL,
-  `delivery_date` char(10) NOT NULL,
+  `departure_date` date NOT NULL,
+  `delivery_date` date NOT NULL,
   PRIMARY KEY (`shipping_id`),
   KEY `order_id` (`order_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
@@ -250,7 +257,10 @@ CREATE TABLE IF NOT EXISTS `shippingmethod` (
 
 INSERT INTO shippingmethod (shipping_id, order_id, street, city, state, zipcode, departure_date, delivery_date)
 VALUES ('321','22288897','865 Circle Ave.','Pheonix','AZ','94103','2019-04-20','2019-05-07'),
-('322','22288898','900 3 Ave.','New York City','NY','65991','2019-04-12','2019-04-17');
+('322','22288898','900 3 Ave.','New York City','NY','65991','2019-04-12','2019-04-17'),
+('323','22288890','80 N Street','SLC','UT','84102','2019-04-10','2019-04-21'),
+('324','22288891','66 Coast Ave.','Seattle','WA','36678','2019-05-01','2019-05-09'),
+('325','22288892','Avenue 4 #54','Los Angeles','CA','75448','2019-04-30','2019-05-17');
 
 
 
