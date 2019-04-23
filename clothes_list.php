@@ -10,7 +10,7 @@ require_once  'php_files/dblogin.php';
 $conn = new mysqli($hn, $un, $pw, $db);
 if($conn->connect_error) die($conn->connect_error);
 
-$query = "SELECT * FROM `product`";
+$query = "SELECT * FROM product";
 $result=$conn->query($query); 
 if(!$result) die($conn->error);
 
@@ -30,6 +30,8 @@ $conn->close();
 	<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">  
 	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
 	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
 	<div>
@@ -125,6 +127,32 @@ $conn->close();
 
 		<br>
 		<br>
+<!-- Preston Edits-->	
+
+		<div class="container-fluid" style="text-align:center" >
+		 <br><br><br>
+		<?php
+		for($j=0; $j<$rows; ++$j){
+		$result->data_seek($j);
+		$row = $result-> fetch_array(MYSQLI_ASSOC);
+		
+		echo <<<_END
+				<div class="col-md-4">
+				  <h4><strong>$row[product_name]</strong></h4>
+				  <img id ="$j.image" height='250' width='250' src=$row[image_path]></img>
+				  <form id= "$j.form" name="myForm" method='post' action="clothes_detail.php">
+					<input type = 'hidden'  name='product_id' value = $row[product_id]>
+					 <p >$row[product_price]</p> 
+				  </form>
+				</div>
+					<script>document.getElementById("$j.image").onclick = function(){document.getElementById("$j.form").submit();};</script>
+_END;
+		}
+		?>
+		
+		</div>
+
+<!-- Preston Edits End-->		
 		<br>
 	<div class = "row">
 		<div class="col-sm-3">    
