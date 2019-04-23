@@ -12,6 +12,10 @@ if(!isset($_SESSION['username']))
 $conn = new mysqli($hn, $un, $pw, $db);
 if($conn->connect_error) die($conn->connect_error);
 
+if(isset($_POST["btnback"])){
+	header("Location: ../clothes_list.php");
+}
+
 if(isset($_POST["btnsubmit"])){
 	
 	$firstname = $_POST['firstname'];
@@ -26,10 +30,11 @@ if(isset($_POST["btnsubmit"])){
 	
 	$query = "UPDATE customer SET firstname='$firstname', lastname='$lastname', email='$email', street='$street', city='$city', state='$state', zipcode='$zipcode', phone=$phone WHERE customer_id=$customer_id";
 	
+	
 	$result = $conn->query($query);
 	if(!$result) die($conn->error);
 	
-	header("Location: ../account.php");		
+	header("Location: ../clothes_list.php");		
 }else{
 	echo "Unsuccessful update";
 }
