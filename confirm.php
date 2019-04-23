@@ -5,7 +5,7 @@ if(!isset($_SESSION['username']))
 	{ $_SESSION['loginMessage'] = "Please Login First";
 		header("Location: login.php");}
 
-	$_SESSION['cart']="";
+	$_SESSION['cart']=[];
 
 ?>
 <html>
