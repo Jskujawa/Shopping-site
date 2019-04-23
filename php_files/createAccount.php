@@ -17,6 +17,8 @@ $state = $_POST["state"];
 $zip = $_POST["zip"];
 $phone = $_POST["phone"];
 
+$hashPassword = $password;// COMMENT THIS OUT WHEN ENABLING HASH/SALT
+
 session_start();
 
 $query= "select * from account";//SQL query for password
@@ -56,15 +58,20 @@ elseif($unexists == 1){
 		$row = $result->fetch_array(MYSQLI_ASSOC);
 		$newCustId = $row['customer_id']; //Essentially a manually done AutoIncrement so I can insert across two tables
 	
+	//HASHING AND SALTING
+	/*
+	$salt1 = 'qm&h*';
+	$salt2 = 'pg!@';
+	$hashPassword = hash('ripemd128',"$salt1$password$salt2");
+	*/
+	
 	$query2 = "INSERT into customer (`customer_id`,`campaign_id`, `firstname`, `lastname`, `email`, `street`, `city`, `state`, `zipcode`, `phone`) 
 			VALUES ('$newCustId',1,'$fname','$lname','$email','$address','$city','$state','$zip','$phone');";
 		$result2 = $conn->query($query2);
 		if(!$result2) die($conn->error);			
 	
-	//$query3 = "SELECT customer_id FROM customer where firstname = '$fname'"; 
-	//YET TO BE DONE: Take max customer_id before inserting customer row, then use that max +1 as new customer id. essentially an autoincrement, but can insert across tables
 	
-	$query4 = "INSERT INTO account (username, password, role, customer_id) VALUES ('$username', '$password','customer', '$newCustId');"; //customer_id is placeholder for now
+	$query4 = "INSERT INTO account (username, password, role, customer_id) VALUES ('$username', '$hashPassword','customer', '$newCustId');"; 
 		$result4 = $conn->query($query4);
 		if(!$result4) die($conn->error);
 	
