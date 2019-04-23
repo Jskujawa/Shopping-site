@@ -1,7 +1,7 @@
 <?php
 
 //Login Page Form Case
-require_once  'php_files/dblogin.php';
+require_once  'dblogin.php';
 
 $conn = new mysqli($hn, $un, $pw, $db);
 if($conn->connect_error) die($conn->connect_error);
