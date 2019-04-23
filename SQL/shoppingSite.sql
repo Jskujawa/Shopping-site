@@ -214,8 +214,24 @@ CREATE TABLE IF NOT EXISTS `product` (
 
 
 INSERT INTO product (product_id, product_name, product_price, image_path)
-VALUES ('2354','Orange Halter Tank','27.99', ./picture/8.jpg),
-('2367','Black Flow Dress','52.99', ./picture/dress.jpg);
+
+VALUES ('2354','Men Blazer - Grey','82.99', './picture/15.jpg'),
+('3665','Men Baseball Tee','20.55', './picture/12.jpg'),
+('6014','Women Orange Halter Tank','27.98', './picture/8.jpg'),
+('6877','Men Utility Jacket','68.75', './picture/17.jpg'),
+('3008','Women Black Flow Dress','52.75', './picture/dress.jpg'),
+('8699','Men Pattern Button-Up','30.29', './picture/13.jpg'),
+('1566','Women Graphic Tee','20.99', './picture/14.jpg'),
+('6447','Women Distressed Overalls','45.00', './picture/16.jpg'),
+('1002','Women Floral Short','25.99', './picture/11.jpg'),
+('3348','Women White Blouse','46.78', './picture/18.jpg'),
+('6872','Women Striped Romper','48.99', './picture/9.jpg'),
+('3229','Men Denim Jack','64.99', './picture/19.jpg'),
+('3305','Men Black Sweats','32.89', './picture/20.jpg'),
+('5447','Men Zip Hoodie','40.55', './picture/21.jpg');
+
+
+
 
 
 
