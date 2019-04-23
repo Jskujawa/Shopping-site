@@ -142,7 +142,7 @@ $conn->close();
 				  <img id ="$j.image" height='250' width='250' src=$row[image_path]></img>
 				  <form id= "$j.form" name="myForm" method='post' action="clothes_detail.php">
 					<input type = 'hidden'  name='product_id' value = $row[product_id]>
-					 <p >$row[product_price]</p> 
+					 <p >$$row[product_price]</p> 
 				  </form>
 				</div>
 					<script>document.getElementById("$j.image").onclick = function(){document.getElementById("$j.form").submit();};</script>
