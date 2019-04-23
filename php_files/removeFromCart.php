@@ -3,11 +3,11 @@ session_start();
 
 if(!isset($_SESSION['username']))
 	{ $_SESSION['loginMessage'] = "Please Login First";
-		header("Location: login.php");
+		header("Location: ../login.php");
 		die();}
 
 if(!isset($_POST['removeItem']))
-	{header("Location: shoppingcart.php");
+	{header("Location: ../shoppingcart.php");
 		die();}
 		
 $removeIndex = $_POST['removeItem'];
