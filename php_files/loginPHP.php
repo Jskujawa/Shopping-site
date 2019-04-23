@@ -1,7 +1,7 @@
 <?php
 
 //Login Page Form Case
-require_once  'dblogin.php';
+require_once  'php_files/dblogin.php';
 
 $conn = new mysqli($hn, $un, $pw, $db);
 if($conn->connect_error) die($conn->connect_error);
@@ -10,6 +10,14 @@ if($conn->connect_error) die($conn->connect_error);
 $username = $_POST["username"];
 $password = $_POST["pwd"];
 
+$hashPassword = $password; // COMMENT THIS OUT WHEN ENABLING HASH/SALT
+
+//HASHING AND SALTING
+/*
+$salt1 = 'qm&h*';
+$salt2 = 'pg!@';
+$hashPassword = hash('ripemd128',"$salt1$password$salt2");
+*/
 	if (isset($_POST['btnsignup'])) {
 		//send to signup.php if signup button clicked
 		header("Location: ../signup.php");
@@ -23,7 +31,7 @@ $password = $_POST["pwd"];
 		$rowCust = $resultCust->fetch_array(MYSQLI_ASSOC);
 		$customer_id = $rowCust['customer_id'];
 		
-		if (!empty($password) &&  $password == $row['password']) {
+		if (!empty($password) &&  $hashPassword == $row['password']) {
 			//set up username and password session variables and send to clothes_list
 			session_start();
 			$_SESSION['username'] = $username;	

@@ -5,7 +5,7 @@ session_start();
 
 if(!isset($_SESSION['username']))
 	{ $_SESSION['loginMessage'] = "Please Login First";
-		header("Location: login.php");
+		header("Location: ../login.php");
 		die();}
 		
 $conn = new mysqli($hn, $un, $pw, $db);
