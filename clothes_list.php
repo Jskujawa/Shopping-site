@@ -139,7 +139,7 @@ $conn->close();
 		echo <<<_END
 				<div class="col-md-4">
 				  <h4><strong>$row[product_name]</strong></h4>
-				  <img id ="$j.image" height='250' width='250' src=$row[image_path]></img>
+				 <img id ="$j.image" style='cursor:pointer' height='250' width='250' src=$row[image_path]></img>
 				  <form id= "$j.form" name="myForm" method='post' action="clothes_detail.php">
 					<input type = 'hidden'  name='product_id' value = $row[product_id]>
 					 <p >$$row[product_price]</p> 
