@@ -113,8 +113,18 @@ if(isset($_POST['checkout']))
 	$expiration = $_POST['expiration'];
 	$security_code = $_POST['security_code'];
 	//How to get customer_id
-	$customer_id = 1234;
-	//$customer_id = $_POST['card_id'];
+	$username = $_SESSION['username'];
+	$query_id="select customer_id from account where username='$username' ";
+	$result_id = $conn->query($query_id);
+	if(!$result_id) die($conn->error);
+	$rows_id = $result_id->num_rows;
+	$customer_ids=array();
+	for($i=0; $i<$rows_id; $i++){
+		$row = $result_id->fetch_array(MYSQLI_ASSOC);
+		$id = $row['customer_id'];
+		$customer_ids[] = $id;
+		}	
+	$customer_id = $customer_ids[0];
 
 	$query = "INSERT INTO payment_method (payment_type, firstname, lastname, card_number,expiration,security_code,customer_id) VALUES ('$payment_type', '$firstname','$lastname', '$card_number','$expiration','$security_code','$customer_id')";
 	
@@ -127,6 +137,5 @@ if(isset($_POST['checkout']))
 }
 
 $conn->close();
-
 
 ?>
