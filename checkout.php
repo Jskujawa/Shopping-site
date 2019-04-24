@@ -6,9 +6,6 @@ if(!isset($_SESSION['username']))
 		header("Location: login.php");}
 
 require_once  'php_files/dblogin.php';
-
-
-
 ?>
 <html>
 <head>
@@ -103,16 +100,17 @@ require_once  'php_files/dblogin.php';
 $conn = new mysqli($hn, $un, $pw, $db);
 if($conn->connect_error) die($conn->connect_error);
 
-
 if(isset($_POST['checkout'])) 
 {
+
+
 	$payment_type = $_POST['payment_type'];
 	$firstname = $_POST['firstname'];
 	$lastname = $_POST['lastname'];
 	$card_number = $_POST['card_number'];
 	$expiration = $_POST['expiration'];
 	$security_code = $_POST['security_code'];
-	//How to get customer_id
+	
 	$username = $_SESSION['username'];
 	$query_id="select customer_id from account where username='$username' ";
 	$result_id = $conn->query($query_id);
@@ -131,11 +129,22 @@ if(isset($_POST['checkout']))
 	$result = $conn->query($query); 
 	if(!$result) die($conn->error);
 	
+	$cart = $_SESSION['cart'];
+	IF (empty(!$cart)){
+	foreach ($cart as $columnName => $columnData) {		
+	$product_id=$columnData;
+	$quantity=1;
+	
+	$query2 = "INSERT INTO orderline (product_id, quantity) VALUES ('$product_id', '$quantity')";
+	$result2 = $conn->query($query2);
+	if(!$result2) die($conn->error);
+	}
+	
 	header("Location: confirm.php");
 	
 	
 }
 
 $conn->close();
-
+}
 ?>
