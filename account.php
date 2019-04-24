@@ -41,6 +41,7 @@ $row = $result->fetch_array(MYSQLI_ASSOC);
 	
 	
 	<body >
+	
 		<img  height='200' width='200' src = 'images/logo.png'></img> 	<!-- center this logo  -->
 		
 		
@@ -88,9 +89,11 @@ $row = $result->fetch_array(MYSQLI_ASSOC);
 								</div> 								
 							<div class="panel-footer">
 								<button class="btn btn-lg" type="submit" name="btnsubmit">Submit</button>
-								<form action="account_update.php"><button class="btn btn-lg" type="submit" name="btnback">Back</button></form>								
+								<form action="account_update.php"><button class="btn btn-lg" type="submit" name="btnback">Back</button></form>
+																
 							</div>						
-						</form>      
+						</form> 
+						<a href = 'return.php'><button class="btn btn-lg"  name="btnreturn">Returns</button></a>						
 					</div>       
 					<div class="col-sm-4 col-xs-12">
 						<!-- Blank row for spacing -->			

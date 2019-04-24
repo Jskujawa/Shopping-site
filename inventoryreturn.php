@@ -30,7 +30,7 @@ if(isset($_POST["btnsubmit"])){
 	$quantity  = $_POST['quantity'];
 	$order_id = $_POST['order_id'];
 
-	$query = "UPDATE inventoryreturn SET return_id='$return_id', inventory_id='$inventory_id', return_date=$'return_date', return_amount=$'return_amount', quantity=$'quantity'; WHERE order_id=$'order_id'";
+	$query = "UPDATE inventoryreturn SET return_id='$return_id', inventory_id='$inventory_id', return_date='$return_date', return_amount='$return_amount', quantity='$quantity' WHERE order_id='$order_id'";
 
 
 	
