@@ -10,14 +10,13 @@ if($conn->connect_error) die($conn->connect_error);
 $username = $_POST["username"];
 $password = $_POST["pwd"];
 
-$hashPassword = $password; // COMMENT THIS OUT WHEN ENABLING HASH/SALT
+ //$hashPassword = $password; COMMENT THIS OUT WHEN ENABLING HASH/SALT
 
 //HASHING AND SALTING
-/*
 $salt1 = 'qm&h*';
 $salt2 = 'pg!@';
 $hashPassword = hash('ripemd128',"$salt1$password$salt2");
-*/
+
 	if (isset($_POST['btnsignup'])) {
 		//send to signup.php if signup button clicked
 		header("Location: ../signup.php");

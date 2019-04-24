@@ -17,7 +17,7 @@ $state = $_POST["state"];
 $zip = $_POST["zip"];
 $phone = $_POST["phone"];
 
-$hashPassword = $password;// COMMENT THIS OUT WHEN ENABLING HASH/SALT
+//$hashPassword = $password; COMMENT THIS OUT WHEN ENABLING HASH/SALT
 
 session_start();
 
@@ -59,11 +59,11 @@ elseif($unexists == 1){
 		$newCustId = $row['customer_id']; //Essentially a manually done AutoIncrement so I can insert across two tables
 	
 	//HASHING AND SALTING
-	/*
+	
 	$salt1 = 'qm&h*';
 	$salt2 = 'pg!@';
 	$hashPassword = hash('ripemd128',"$salt1$password$salt2");
-	*/
+	
 	
 	$query2 = "INSERT into customer (`customer_id`,`campaign_id`, `firstname`, `lastname`, `email`, `street`, `city`, `state`, `zipcode`, `phone`) 
 			VALUES ('$newCustId',1,'$fname','$lname','$email','$address','$city','$state','$zip','$phone');";
