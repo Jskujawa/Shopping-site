@@ -4,6 +4,12 @@ session_start();
 if(!isset($_SESSION['username']))
 	{ $_SESSION['loginMessage'] = "Please Login First";
 		header("Location: login.php");}
+		
+if($_SESSION['role']!='admin' and $_SESSION['role']!='customer' ){
+	$_SESSION['loginMessage'] = "Access Restricted: Please Login First";
+	header("Location: login.php");
+	die();
+}
 
 require_once  'php_files/dblogin.php';
 ?>

@@ -1,6 +1,6 @@
 <?php
 
-require_once 'login.php';
+require_once 'php_files/dblogin.php';
 
 
 session_start(); 
@@ -9,6 +9,13 @@ if(!isset($_SESSION['username']))
 	{ $_SESSION['loginMessage'] = "Please Login First";
 		header("Location: ../login.php");
 		die();}
+
+if($_SESSION['role']!='admin' and $_SESSION['role']!='customer' ){
+	$_SESSION['loginMessage'] = "Access Restricted: Please Login First";
+	header("Location: login.php");
+	die();
+}
+
 
 $conn = new mysqli($hn, $un, $pw, $db);
 if($conn->connect_error) die($conn->connect_error);

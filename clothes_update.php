@@ -1,11 +1,16 @@
 <?php
-
 session_start(); 
 
 if(!isset($_SESSION['username']))
 	{ $_SESSION['loginMessage'] = "Please Login First";
 		header("Location: login.php");
 		die();}
+
+if($_SESSION['role']!='admin'){
+	$_SESSION['clothesListMessage'] = "Access Restricted to Administrators";
+	header("Location: clothes_list.php");
+	die();
+}
 
 require_once  'php_files/dblogin.php';
 

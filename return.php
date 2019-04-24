@@ -1,4 +1,24 @@
-<!DOCTYPE html>
+<?php
+
+session_start(); 
+
+if(!isset($_SESSION['username']))
+	{ $_SESSION['loginMessage'] = "Please Login First";
+		header("Location: ../login.php");
+		die();}
+
+if($_SESSION['role']!='admin' and $_SESSION['role']!='customer' ){
+	$_SESSION['loginMessage'] = "Access Restricted: Please Login First";
+	header("Location: login.php");
+	die();
+}
+
+
+
+
+?>
+
+
 <html>
 <head>
 	<meta charset="utf-8"> 
