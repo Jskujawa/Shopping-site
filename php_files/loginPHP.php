@@ -25,10 +25,11 @@ $hashPassword = hash('ripemd128',"$salt1$password$salt2");
 		$result = $conn->query($query);
 		$row = $result->fetch_array(MYSQLI_ASSOC);
 		
-		$query2= "select customer_id from account where username='$username' LIMIT 1 ";
+		$query2= "select * from account where username='$username' LIMIT 1 ";
 		$resultCust = $conn->query($query2);
 		$rowCust = $resultCust->fetch_array(MYSQLI_ASSOC);
 		$customer_id = $rowCust['customer_id'];
+		$customer_role = $rowCust['role'];
 		
 		if (!empty($password) &&  $hashPassword == $row['password']) {
 			//set up username and password session variables and send to clothes_list
@@ -36,6 +37,7 @@ $hashPassword = hash('ripemd128',"$salt1$password$salt2");
 			$_SESSION['username'] = $username;	
 			$_SESSION['password'] = $password;
 			$_SESSION['customer_id'] = $customer_id;
+			$_SESSION['role'] = $customer_role;
 			$_SESSION['loginMessage'] = "";
 			header("Location: ../clothes_list.php");
 		}
