@@ -154,63 +154,7 @@ _END;
 
 <!-- Preston Edits End-->		
 		<br>
-	<div class = "row">
-		<div class="col-sm-3">    
-			<a href="clothes_detail.php"><img src="./picture/9.jpg" class="img-response" alt="foodreview" width="190" height="200
-			"></a>
-			<a href="clothes_detail.php"><h2>$49.99</h2></a>  
-			<p> Beautiful summer dress with Length:Short Material:Polyester Style:Boho Details:Belted, Knot Pattern </p>
-		</div>
-	
-		<div class="col-sm-3">    
-			<a href="clothes_detail.php"><img src="./picture/9.jpg" class="img-response" alt="foodreview" width="190" height="200
-			"></a>
-			<a href="clothes_detail.html"><h2>$49.99</h2></a>  
-			<p> Beautiful summer dress with Length:Short Material:Polyester Style:Boho Details:Belted, Knot Pattern</p>
-		</div>
-	
-		<div class="col-sm-3">    
-			<a href="clothes_detail.html"><img src="./picture/9.jpg" class="img-response" alt="foodreview" width="190" height="200
-			"></a>
-			<a href="clothes_detail.html"><h2>$49.99</h2></a>  
-			<p> Beautiful summer dress with Length:Short Material:Polyester Style:Boho Details:Belted, Knot Pattern </p>
-        </div>
-		
-		<div class="col-sm-3">    
-			<a href="clothes_detail.html"><img src="./picture/9.jpg" class="img-response" alt="foodreview" width="190" height="200
-			"></a>
-			<a href="clothes_detail.html"><h2>$49.99</h2></a>  
-			<p> Beautiful summer dress with Length:Short Material:Polyester Style:Boho Details:Belted, Knot Pattern </p>
-		</div>
-	</div>
-	
-	<div class = "row">
 
-		<div class="col-sm-3">    
-			<a href="clothes_detail.html"><img src="./picture/9.jpg" class="img-response" alt="foodreview" width="190" height="200
-			"></a>
-			<a href="clothes_detail.html"><h2>$49.99</h2></a>  
-			<p> Beautiful summer dress with Length:Short Material:Polyester Style:Boho Details:Belted, Knot Pattern </p>
-		</div>
-		<div class="col-sm-3">    
-			<a href="clothes_detail.html"><img src="./picture/9.jpg" class="img-response" alt="foodreview" width="190" height="200
-			"></a>
-			<a href="clothes_detail.html"><h2>$49.99</h2></a>  
-			<p> Beautiful summer dress with Length:Short Material:Polyester Style:Boho Details:Belted, Knot Pattern</p>
-		</div>
-		<div class="col-sm-3">    
-			<a href="clothes_detail.html"><img src="./picture/9.jpg" class="img-response" alt="foodreview" width="190" height="200
-			"></a>
-			<a href="clothes_detail.html"><h2>$49.99</h2></a>  
-			<p> Beautiful summer dress with Length:Short Material:Polyester Style:Boho Details:Belted, Knot Pattern </p>
-        </div>
-		<div class="col-sm-3">    
-			<a href="clothes_detail.html"><img src="./picture/9.jpg" class="img-response" alt="foodreview" width="190" height="200
-			"></a>
-			<a href="clothes_detail.html"><h2>$49.99</h2></a>  
-			<p> Beautiful summer dress with Length:Short Material:Polyester Style:Boho Details:Belted, Knot Pattern </p>
-		</div>
-	</div>
 </div>
 </body>
 </html>
