@@ -67,8 +67,8 @@ $conn->close();
  
 <div class="container">
 	<div class="col-sm-3">    
-		<a href="clothes_detail.html"><img src="./picture/4.jpg" class="img-response" alt="clothesreview" width="190" height="30"></a>
-		<a href="clothes_detail.html"><h2>Clothes Classify</h2></a>  
+		<a href="clothes_list.php"><img src="./picture/4.jpg" class="img-response" alt="clothesreview" width="190" height="30"></a>
+		<a href="clothes_list.php"><h2>Clothes Classify</h2></a>  
 		<p> Suburban Outfitters is an American fashion clothes company, founded in 2018 as a dress store operated by Jared, Amelia, Preston and Xinyi in Salt lake city, Utah, United States.</p>
 	</div>
 	<div class="col-sm-6">    
@@ -96,9 +96,9 @@ $conn->close();
 	</div>
 	</div>
  	<div class="col-sm-3">    
-		<a href="clothes_detail.html"><img src="./picture/8.jpg" class="img-response" alt="clothesreview" width="200" height="90"></a>
-		<a href="clothes_detail.html"><img src="./picture/5.jpg" class="img-response" alt="clothesreview" width="200" height="25"></a>
-		<a href="clothes_detail.html"><img src="./picture/7.jpg" class="img-response" alt="clothesreview" width="200" height="90"></a>
+		<a href="clothes_list.php"><img src="./picture/8.jpg" class="img-response" alt="clothesreview" width="200" height="90"></a>
+		<a href="clothes_list.php"><img src="./picture/5.jpg" class="img-response" alt="clothesreview" width="200" height="25"></a>
+		<a href="clothes_list.php"><img src="./picture/7.jpg" class="img-response" alt="clothesreview" width="200" height="90"></a>
 		
 	</div>
 		

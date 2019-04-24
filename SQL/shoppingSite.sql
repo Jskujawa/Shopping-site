@@ -32,11 +32,11 @@ CREATE TABLE IF NOT EXISTS `account` (
 --
 
 INSERT INTO `account` (`username`, `password`, `role`, `customer_id`) VALUES
-('Heisenberg', 'WaltJr', 'admin', 1234),
-('SpiderMan', 'UncleBen', 'customer', 2222),
-('Scarletwid', 'pass2349', 'customer', 3635),
-('TonyS', '900loginpass', 'customer', 18995),
-('RachelGreen', 'super90078', 'customer', 644597);
+('Heisenberg', '1cad97c11e2b70b4fa7a2691ddb7d2c6', 'admin', 1234),
+('SpiderMan', 'd2c0e660342d1383299cce0e1a07d0af', 'customer', 2222),
+('Scarletwid', '13858fde82a209ca44c465c4d8a9271e', 'customer', 3635),
+('TonyS', '1231531d28594aa769135a2d32776d1c', 'customer', 18995),
+('RachelGreen', 'aad4edb3d53fee8832923462cc488340', 'customer', 644597);
 
 
 --
@@ -95,7 +95,7 @@ INSERT INTO customer (customer_id, campaign_id, firstname, lastname, street, cit
 
 DROP TABLE IF EXISTS `inventory`;
 CREATE TABLE IF NOT EXISTS `inventory` (
-  `inventory_id` int(50) NOT NULL,
+  `inventory_id` int(50) NOT NULL AUTO_INCREMENT,
   `product_id` int(50) NOT NULL,
   `quantity_on_hand` int(100) NOT NULL,
   PRIMARY KEY (`inventory_id`),
@@ -168,7 +168,7 @@ INSERT INTO `inventoryreturn` (`return_id`, `inventory_id`, `order_id`, `return_
 
 DROP TABLE IF EXISTS `orderline`;
 CREATE TABLE IF NOT EXISTS `orderline` (
-  `order_id` int(50) NOT NULL,
+  `order_id` int(50) NOT NULL AUTO_INCREMENT,
   `product_id` int(50) NOT NULL,
   `quantity` int(100) NOT NULL,
   PRIMARY KEY (`order_id`,`product_id`)
@@ -228,7 +228,7 @@ VALUES('336','1234','Visa','Walter','White','1234123412341230','08/22','123'),
 
 DROP TABLE IF EXISTS `product`;
 CREATE TABLE IF NOT EXISTS `product` (
-  `product_id` int(50) NOT NULL,
+  `product_id` int(50) NOT NULL AUTO_INCREMENT,
   `product_name` varchar(100) NOT NULL,
   `product_price` char(20) NOT NULL,
   `image_path` varchar (100) NOT NULL,
