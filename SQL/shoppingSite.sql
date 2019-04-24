@@ -138,9 +138,28 @@ CREATE TABLE IF NOT EXISTS `inventory_order` (
 
 
 INSERT INTO inventory_order (supplier_id, inventory_id, quantity, order_date, expected_arrival_date)
-VALUES ('112','7777','50','2019-04-30','2019-05-07'),
+VALUES('112','7777','50','2019-04-30','2019-05-07'),
 ('113','5687','83','2019-05-01','2019-05-11'),
-('114','9663','27','2019-05-07','2019-05-17');
+('114','9663','27','2019-05-07','2019-05-17'),
+('115','7777','30','2019-05-09','2019-05-19'),
+('116','5687','84','2019-05-11','2019-05-21'),
+('117','9663','56','2019-05-13','2019-05-23'),
+('118','6331','98','2019-05-15','2019-05-25'),
+('119','9755','44','2019-05-17','2019-05-27'),
+('120','6144','55','2019-05-19','2019-05-29'),
+('121','2056','21','2019-05-21','2019-05-31'),
+('122','3326','54','2019-05-23','2019-06-02'),
+('123','1155','78','2019-05-25','2019-06-05'),
+('124','4428','56','2019-05-27','2019-06-11'),
+('125','4668','99','2019-05-29','2019-06-13'),
+('126','9974','50','2019-06-30','2019-07-12'),
+('127','3996','20','2019-06-30','2019-07-12'),
+('128','1223','30','2019-06-30','2019-07-12'),
+('129','2056','45','2019-06-30','2019-07-12'),
+('130','3326','65','2019-06-30','2019-07-12'),
+('131','1155','78','2019-06-30','2019-07-12');
+
+
 
 
 --
@@ -330,16 +349,33 @@ CREATE TABLE IF NOT EXISTS `supplier` (
   `city` varchar(100) NOT NULL,
   `state` varchar(2) NOT NULL,
   `zipcode` varchar(8) NOT NULL,
-  `email` varchar(30) NOT NULL,
+  `email` varchar(100) NOT NULL,
   `phone` bigint(15) NOT NULL,
   PRIMARY KEY (`supplier_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 
 INSERT INTO supplier (supplier_id, supplier_name, street, city, state, zipcode, email, phone)
-VALUES ('1','West Coast Outerwear','803 Sunny Street','LA','CA','76992','order@wco.com','9642231875'),
-('2','Textiles and Co.','71 N Border Street','Denver','CO','22378','order@textilesco.com','2657789885'),
-('3','Backcountry Suppliers Ltd.','39 3rd Avenue #26','NYC','NY','13368','order@backcountrysupply.com','3665987445');
+VALUES ('112','West Coast Outerwear','803 Sunny Street','LA','CA','76992','order@WestCoastOuterwear.com','9642231875'),
+('113','Textiles and Co.','71 N Border Street','Denver','CO','22378','order@TextilesandCo..com','2657789885'),
+('114','Backcountry Suppliers Ltd.','39 3rd Avenue #26','NYC','NY','13368','order@BackcountrySuppliersLtd..com','3665987445'),
+('115','Hanes Supplies','4874 Rose Street','Arlington Heights','IL','60005','order@HanesSupplies.com','9875564879'),
+('116','Dicks Sporting Goods','4884 Ripple Street','Saginaw','MI','48607','order@DicksSportingGoods.com','3256689745'),
+('117','Forever 21','357 Carter Street','Sailor Springs','IL','97401','order@Forever21.com','6657748978'),
+('118','Textiles LTD.','566 Andy Street','Long Valley','SD','20036','order@TextilesLTD..com','2215478998'),
+('119','Jeans and Things','4270 Midway Road','Springdale','AR','54478','order@JeansandThings.com','5668177456'),
+('120','The Gap','4169 Grove Avenue','Clinton','OK','36658','order@TheGap.com','3665299874'),
+('121','Supplies Guys','3263 Jadewood Drive','Buffalo Grove','IL','35998','order@SuppliesGuys.com','5564471105'),
+('122','Northpoint Supplies','1177 Gladwell Street','Athens','TX','67785','order@NorthpointSupplies.com','2239887456'),
+('123','The Point Online Retailer','543 Old House Drive','Worthington','OH','96654','order@ThePointOnlineRetailer.com','3085006957'),
+('124','Orange Company','328 Browning Lane','Johnson City','NY','41125','order@OrangeCompany.com','6075448165'),
+('125','Hanks Clothes Online','4070 New Street','Eugene','OR','63357','order@HanksClothesOnline.com','5146108897'),
+('126','Cheap and Easy Retailer','4230 Rosemont Avenue','Long Beach','CA','26648','order@CheapandEasyRetailer.com','5047756998'),
+('127','The Edge Sporting Goods','1451 Raver Croft Drive','Chattanooga','TN','20036','order@TheEdgeSportingGoods.com','5047789785'),
+('128','European Outerwear','2249 Simpson Avenue','Jonestown (Lebanon)','PA','69975','order@EuropeanOuterwear.com','8774566987'),
+('129','East Coast Trading Co.','481 Eastland Avenue','Laurel','MS','64487','order@EastCoastTradingCo..com','8663221456'),
+('130','Fir Trading Co.','1348 Elkview Drive','Roswell','GA','26548','order@FirTradingCo..com','7004566987'),
+('131','Quality Textiles','1368 Hoffman Avenue','New York','NY','12447','order@QualityTextiles.com','5669877456');
 
 
 
