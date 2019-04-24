@@ -13,7 +13,7 @@ if($conn->connect_error) die($conn->connect_error);
 
 if(isset($_POST['product_id'])){
 	
-	$product_list = $_POST['product_id'];
+	$product_list=$_POST['product_id'];
 }
 
 $query = "SELECT * from product where product_id = $product_list"; 
@@ -89,15 +89,14 @@ $conn->close();
 			<input type = 'hidden' name='qtyOnHand' value =<?php print $inv['quantity_on_hand'];?>>
 			 <div class=" col-sm-4">
 				<button class="btn-lg" type="submit" name="btnsubmit">Add to Cart</button>
-			</div>
+			
+		</form>
+	<br>
 <!-- Preston Edits-->
-		<form action="php_files/clothes_update.php" method="POST"> 
-			<input type = 'hidden' name='productId' value =<?php print $row['product_id'];?>>
-			<input type = 'hidden' name='price' value =<?php print $row['product_price'];?>>
-			<input type = 'hidden' name='qtyOnHand' value =<?php print $inv['quantity_on_hand'];?>>
-			 <div class=" col-sm-4">
-				<button class="btn-lg" type="submit" name="btnsubmit">Update Item</button>
-			</div>
+		<form action="clothes_update.php" method="POST"> 
+			<input type = 'hidden' name='product_id' value =<?php print intval($row['product_id']);?>>
+				<button class="btn-lg" type="submit" name="btnupdate">Update Item</button>
+				</div>
 <!-- Preston Edits End-->
 				<!--REMOVING BELOW CODE FOR SIZE AND QTY AS OUR DATABASE HAS NO FUNCTIONALITY FOR THIS
 				<div>
