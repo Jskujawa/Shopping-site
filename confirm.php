@@ -52,7 +52,7 @@ if(!isset($_SESSION['username']))
 <br>		
 <br>
 		<div class="col-sm-offset-9 col-sm-8">
-			<button class="btn" type="submit" name="btnsubmit">Back</button>
+			<button class="btn" type="submit" name="btnsubmit" onclick="location.href='clothes_list.php'">Back</button>
 		</div>
 	</div>
 
