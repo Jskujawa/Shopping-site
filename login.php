@@ -1,3 +1,9 @@
+<?php
+
+require_once  'php_files/dblogin.php';
+
+?>
+
 <html>
 	<head>
 		<title>Suburban Outfitters Login</title>

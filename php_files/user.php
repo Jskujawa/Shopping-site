@@ -38,11 +38,6 @@ class User{
 }
 
 
-//$user = new User('bsmith');
-//$roles = $user->getRoles();
-//print_r($roles);
-
-
 
 
 
